@@ -1,0 +1,83 @@
+
+
+
+<div class=" animated fadeIn row">
+  <div class="col-md-12">
+    <div>
+      <div class="card card-accent-primary">
+        <div class="card-header">
+          CUSTOMER DETAILS
+        </div>
+        <div class="card-body">
+          <div class="grid-table">
+            <div class="thead">
+              <div class="tr">
+                <div class="td">SI no</div>
+                <div class="td">Customer Name</div>
+                <div class="td">Address</div>
+                <div class="td">City</div>
+                <div class="td">State</div>
+                <div class="td">Contact Number</div>
+                <div class="td">Delivery Mode</div>
+                <div class="td">Status</div>
+                <div class="td">
+                  <button class="btn btn-outline-success" (click) ="addCustomers()" ><i class="fa fa-user-plus" aria-hidden="true"></i>New</button>
+                </div>
+              </div>
+            </div>
+            <div class="tbody">
+               <form [formGroup]="fg" *ngFor="let fg of customersForms.controls; let i=index;" class="tr" (submit)="recordSubmit(fg)" >
+                <div class="td">
+                  <input type="tel" class="form-control" formControlName="id" >
+                </div>
+                 <div class="td">
+                   <input type="tel" class="form-control" formControlName="SIno" >
+                 </div>
+                 <div class="td">
+                  <input type="text" class="form-control" formControlName="customerName" >
+                </div>
+                <div class="td">
+                  <input type="text" class="form-control" formControlName="address" >
+                </div>
+                <div class="td">
+                  <input type="text" class="form-control" formControlName="city" >
+                </div>
+                <div class="td">
+                  <input type="text" class="form-control" formControlName="state" >
+                </div>
+                <div class="td">
+                  <input type="tel" class="form-control" formControlName="contactNumber" >
+                </div>
+                <div class="td">
+                  <select  class="form-control" formControlName="deliveryMode" >
+                    
+                    <option value="Train">Train</option>
+                    <option value="Bus">Bus</option>
+                    <option value="Lorry">Lorry</option>
+                    </select>
+                </div>
+                <div class="td">
+                  <select  class="form-control" formControlName="status" >
+                    
+                    <option value="Active">Active</option>
+                    <option value="Passive">Passive</option>
+                    <option value="Retired">Retired</option>
+                  </select>
+                </div>
+                <div class="td">
+                  <button type="submit" class="btn" [ngClass]="(fg.get('id').value==0)?'btn-success':'btn-outline-dark'" [disabled]= "fg.invalid" >{{fg.get('id').value==0?'Submit':'Update'}} </button>
+                  <button class="btn btn-light ml-1" (click)="onDelete(fg.get('id').value,i)" >
+                    Delete
+                  </button>
+                </div>
+               </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+
+</div>

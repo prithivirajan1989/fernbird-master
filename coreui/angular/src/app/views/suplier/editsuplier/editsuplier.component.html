@@ -1,0 +1,130 @@
+<div class="container" style="padding: 0px;" >
+    <div class="col-md-12 " style="padding: 0px;">
+      <div class="card" style="margin:10px;">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> UPDATE VENDOR
+
+          <button  style=" margin: 10px;padding:5px 40px 5px 40px;" tooltip="Delete Suplier" placement="top" show-delay="500" data-toggle="modal" (click)="dangerModal.show()" class="btn btn-danger pull-right">Delete</button>
+          <div bsModal #dangerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-danger" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Do you want delete this record?</h4>
+                </div>
+
+                <div class="modal-footer">
+                  <button  style=" margin: 10px;padding:5px 40px 5px 40px;" type="button" class="btn btn-secondary" (click)="dangerModal.hide()">Cancel</button>
+                  <button  style=" margin: 10px;padding:5px 40px 5px 40px;" type="button" (click)="deleteSuplier()" class="btn btn-danger">Delete</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div>
+        </div>
+        <div class="card-body" >
+
+          <form [formGroup]="detailForm" (ngSubmit)="onUpdate()">
+
+
+            <div class="row">
+              <label class="col-md-3">SI no :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="SI No"  formControlName="sino" #sino   [(ngModel)] = "supliers.sino"
+                [ngClass]="{'is-invalid':detailForm.get('sino').touched && detailForm.get('sino').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>SI no is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Address :</label>
+              <div class="form-group col-md-5">
+                <textarea type="text" class="form-control" placeholder="Address"  formControlName="address" #address   [(ngModel)] = "supliers.address"
+                [ngClass]="{'is-invalid':detailForm.get('address').touched && detailForm.get('address').invalid}"  ></textarea>
+                <div class="invalid-feedback">
+                  <div>Address is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Vendor Name :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Vendor Name"  formControlName="suplierName" #suplierName [(ngModel)] = "supliers.suplierName"
+                [ngClass]="{'is-invalid':detailForm.get('suplierName').touched && detailForm.get('suplierName').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Suplier Name is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">City :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="City" formControlName="city" #city  [(ngModel)] = "supliers.city"
+                [ngClass]="{'is-invalid':detailForm.get('city').touched && detailForm.get('city').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>City is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">State :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="State"formControlName="state" #state  [(ngModel)] = "supliers.state"
+                [ngClass]="{'is-invalid':detailForm.get('state').touched && detailForm.get('state').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>State is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Contact Number :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Contact Number" formControlName="contactNumber" #contactNumber [(ngModel)] = "supliers.contactNumber"
+                [ngClass]="{'is-invalid':detailForm.get('contactNumber').touched && detailForm.get('contactNumber').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Contact Number is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Status :</label>
+              <div class="form-group col-md-5">
+                <select  class="form-control" formControlName="status" placeholder="Status" #status [(ngModel)] = "supliers.status"
+                [ngClass]="{'is-invalid':detailForm.get('status').touched && detailForm.get('status').invalid}" >
+                <option value="Active">Active</option>
+                <option value="Passive">Passive</option>
+                <option value="Retired">Retired</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div>Status is required</div>
+                  </div>
+
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Product :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Product" formControlName="product" #product [(ngModel)] = "supliers.product"
+                [ngClass]="{'is-invalid':detailForm.get('product').touched && detailForm.get('product').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Product is required</div>
+                </div>
+            </div>
+            </div>
+
+
+
+            <button type="submit" style=" margin: 10px;padding:5px 40px 5px 40px;" [disabled]= "detailForm.invalid" class="btn btn-success pull-right">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+

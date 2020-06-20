@@ -1,0 +1,118 @@
+<div class="container" style="padding: 0px;" >
+    <div class="col-md-12" style="padding: 0px;" >
+      <div class="card">
+        <div class="card-header">
+          <strong> Add Warehouse </strong>
+        </div>
+        <div class="card-body">
+    
+          <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+  
+            <div class="row">
+              <label class="col-md-3">Warehouse Name :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Warehouse Name"  formControlName="warehouseName" #warehouseName 
+                [ngClass]="{'is-invalid':detailForm.get('warehouseName').touched && detailForm.get('warehouseName').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Warehouse Name is required</div>
+                </div>
+            </div>
+            </div>
+  
+           
+  
+            <div class="row">
+              <label class="col-md-3"> Street 1 :</label>
+              <div class="form-group col-md-5">
+                <textarea type="text" rows="1" class="form-control" placeholder="Street 1"  formControlName="street1" #street1 
+                [ngClass]="{'is-invalid':detailForm.get('street1').touched && detailForm.get('street1').invalid}"  ></textarea>
+                <div class="invalid-feedback">
+                  <div>Street 1 is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3"> Street 2 :</label>
+              <div class="form-group col-md-5">
+                <textarea type="text" rows="1" class="form-control" placeholder="Street 2"  formControlName="street2" #street2 
+                [ngClass]="{'is-invalid':detailForm.get('street2').touched && detailForm.get('street2').invalid}"  ></textarea>
+                <div class="invalid-feedback">
+                  <div>Street 2 is required</div>
+                </div>
+            </div>
+            </div>
+  
+            <div class="row">
+              <label class="col-md-3"> City :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder=" City"  formControlName="city" #city 
+                [ngClass]="{'is-invalid':detailForm.get('city').touched && detailForm.get('city').invalid}"  />
+                <div class="invalid-feedback">
+                  <div> City is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">  Country :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Country" formControlName="country" #country 
+                [ngClass]="{'is-invalid':detailForm.get('country').touched && detailForm.get('country').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Country is required</div>
+                </div>
+            </div>
+            </div>
+  
+            <div class="row">
+              <label class="col-md-3">  State :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="State" formControlName="state" #state 
+                [ngClass]="{'is-invalid':detailForm.get('state').touched && detailForm.get('state').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>State is required</div>
+                </div>
+            </div>
+            </div>
+  
+            
+            <div class="row">
+              <label class="col-md-3">  Number:</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder=" Number" formControlName="number" #number 
+                [ngClass]="{'is-invalid':detailForm.get('number').touched && detailForm.get('number').invalid}"  />
+                <div class="invalid-feedback">
+                  <div> Number is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">  Email:</label>
+              <div class="form-group col-md-5">
+                <input type="email" class="form-control" placeholder=" Email" formControlName="email" #email 
+                [ngClass]="{'is-invalid':detailForm.get('email').touched && detailForm.get('email').invalid}"  />
+                <div class="invalid-feedback">
+                  <div> Email is required</div>
+                </div>
+            </div>
+            </div>
+  
+          
+  
+          
+    
+    
+           
+           
+            <button style="margin: 10px; padding:5px 30px 5px 30px;" type="submit"  [disabled]= "detailForm.invalid" class="btn btn-primary pull-right"> save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+ 

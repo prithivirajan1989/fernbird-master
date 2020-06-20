@@ -1,0 +1,97 @@
+<div  class=" animated fadeIn row" >
+    <div class="col-md-12 mx-auto" style="padding: 5px;" >
+      <div >
+        <div class="card "  >
+  
+          <div class="card-body" style="height: 100%;">
+
+
+            <div class="container col-md-12"  style="display: flex;
+            " style="margin-top: 2%;">
+            <div class="row col-md-12"  style="padding: 20px;">
+               <h2>GST Settings</h2>
+            </div>
+
+            <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+
+                <div class="row col-md-12" style="padding: 20px; margin: 5px; border: 2; background-color:whitesmoke">
+                    <div class="form-group row">
+                        <label class="col-md-9" >Is your business registered for GST?</label>
+                        <div class="col-md-4 ">
+                          <div class="form-check form-check-inline mr-3" >
+                            <input class="form-check-input" (change)="onInput($event)" formControlName="check" type="radio"  value="1">
+                            <label class="form-check-label" >yes</label>
+                          </div>
+                          <div class="form-check form-check-inline mr-3">
+                            <input class="form-check-input" (change)="change($event)" type="radio" formControlName="check" value="2" checked >
+                            <label class="form-check-label"  >no</label>
+                          </div>
+                        </div>
+                      </div>
+                   
+                </div>
+
+                <div *ngIf="activeForm" class="col-md-12"  style="padding: 20px; margin: 5px; border: 2;">
+                  
+                  
+                    <div class="row">
+                        <label class="col-md-3">GSTIN No :</label>
+                       
+                        <div class="form-group col-md-6">
+                          <input type="tel" class="form-control"formControlName="gstinNo" maxlength="12" placeholder="GSTIN No" #gstinNo 
+                          required
+                          [ngClass]="{'is-invalid':detailForm.get('gstinNo').touched && detailForm.get('gstinNo').invalid}">
+                          <div class="invalid-feedback">
+                            <div>GSTIN NO is required</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label style="color: red;" class="col-md-3">GSTIN Date* :</label>
+                        <div class="form-group col-md-6">
+                          <input type="text" class="form-control" formControlName="gstinDate" #gstinDate
+                          placeholder="GSTIN Date"  required
+                          [ngClass]="{'is-invalid':detailForm.get('gstinDate').touched && detailForm.get('gstinDate').invalid}"
+                          bsDatepicker/>
+                          <div class="invalid-feedback">
+                            <div>GSTIN Date is required</div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                 
+
+                  <div class="row">
+                    <label class="col-md-3">GSTIN Scheme :</label> 
+                    <div class="form-group col-md-5">
+                      <select  class="form-control" formControlName="scheme" placeholder="Delivey Mode" #scheme 
+                      [ngClass]="{'is-invalid':detailForm.get('scheme').touched && detailForm.get('scheme').invalid}" >    
+                        <option value="1">1%</option>
+                        <option value="5">5%</option>
+                        <option value="6">6%</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          <div>GSTIN Scheme is required</div>
+                        </div>
+
+                        
+                    
+                  </div>
+                  </div>
+
+                  <button style="margin: 10px; padding:5px 30px 5px 30px;" type="submit"  [disabled]= "detailForm.invalid" class="btn btn-primary pull-right">Save</button>
+                </div>
+               
+            </form>
+            </div>
+  
+  
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>

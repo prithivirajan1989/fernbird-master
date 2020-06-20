@@ -1,0 +1,96 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<div class=" animated fadeIn row" *ngIf="Users">
+  <div class="col-md-10  mx-auto">
+    <div>
+      <div class="card card-accent-primary">
+        <div class="card-header">
+          PROFILE DETAILS
+        </div>
+        <div class="card-body">
+          <form class="form-horizontal" >
+            <button *ngIf="editProfile" class="align-items-right"   style="padding:5px 40px 5px 40px; " (click)="onProfileEdit()" type="button" class="btn btn-primary pull-right">EDIT</button>
+            <div class="form-group row col-lg-12 ">
+              <div class=" col-lg-4 ">
+                <img [src]="imgUrl" style="width: 100px; height: 100px; align-items: center; " class="rounded-circle ">
+              </div>
+              <div *ngIf="editbutton">
+                <button  (click)="onProfileImageEdit()" style="padding:5px 30px 5px 30px;margin-top: 30px; margin-right: 0px; margin-left: 0px;"   class="btn btn-primary" type="button"> EDIT PROFILE PIC </button>
+              </div>
+              <div  *ngIf="editProfileImg" class="col-md-5" style="margin-top: 20px; width: 100%;" >
+                <input type="file"  class="form-control" (change)="onFileSelected($event.target.files)" required >
+                <button  style="margin-top: 15px;" type="submit" (click)="onProfileImageSubmit()" class="btn btn-outline-success pull-left">UPLOAD</button>
+                <button style="margin-top: 15px;" (click)="onProfileClose()" type="button" class="btn btn-outline-primary pull-right">CANCEL</button>
+              </div>
+            </div>
+            <div  class="form-group row">
+              <label class="col-md-3 col-form-label" for="email-input">NAME    </label>
+              <div *ngIf="editProfileName" class="col-md-3">
+                <input type="text" [(ngModel)]="Users.name" class="form-control" name="name" required placeholder="User Name">
+              </div>
+              <p *ngIf="!editProfileName"  >{{Users.name}}</p>
+            </div>
+
+                <input type="hidden" [(ngModel)]="Users.id" class="form-control" name="name" required placeholder="User Name">
+
+
+            <div  class="form-group row">
+              <label class="col-md-3 col-form-label" for="email-input">EMAIL    </label>
+              <div *ngIf="editProfileEmail" class="col-md-3">
+                <input type="text" [(ngModel)]="Users.email" class="form-control" name="email" required placeholder="User Name">
+              </div>
+              <p *ngIf="!editProfileEmail"  >{{Users.email}}</p>
+            </div>
+            <div  class="form-group row">
+              <label class="col-md-3 col-form-label" for="email-input">MOBILE NUMBER  </label>
+              <div *ngIf="editProfileNumber" class="col-md-3">
+                <international-phone-number  [(ngModel)]="Users.mobilenumber" placeholder="Enter mobilenumber" [maxlength]="20" [defaultCountry]="'in'" [required]="true"  name="mobilenumber" [allowedCountries]="['in','ae']"></international-phone-number>
+                <!-- <input type="tel" [(ngModel)]="Users.mobilenumber" class="form-control" name="mobilenumber" required placeholder="User Name"> -->
+              </div>
+              <p *ngIf="!editProfileNumber"  >{{Users.mobilenumber}}</p>
+            </div>
+            <div  class="form-group row">
+              <div bsModal #primaryModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-primary" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">ENTER YOUR PASSWORD</h4>
+                      <button type="button" class="close" (click)="primaryModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div>
+                        <input type="password" [(ngModel)]="password" class="form-control" name="password" required placeholder="Enter your Password">
+                        <p></p>
+                        <button  style="padding:5px 40px 5px 40px; " class="align-items-center" type="submit"  class="btn btn-primary" (click)="onProfileSubmit()" >SAVE</button>
+                      </div>
+
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <label class="col-md-3 col-form-label" for="email-input">Change Password :</label>
+              <div *ngIf="editProfilePassword" class="col-md-9">
+                <input type="text" [(ngModel)]="Users.password" class="form-control" name="password" required placeholder="Change Password">
+              </div>
+              <p *ngIf="!editProfilePassword" (click)="onProfilePassword()" >Enter the Password to conform the changes</p>
+            </div> -->
+            <button  style="padding:5px 30px 5px 30px; " *ngIf="editbutton" type="button" (click)="primaryModal.show()"  class="btn btn-primary mr-1 mb-2">SAVE CHANGES</button>
+            <button  style="padding:5px 30px 5px 30px;" *ngIf="editbutton" (click)="onProfileClose()" type="button" class="btn btn-primary ml-1 mb-2" >CANCEL</button>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div>
+  <app-logo></app-logo>
+</div>

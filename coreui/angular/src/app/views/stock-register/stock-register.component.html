@@ -1,0 +1,133 @@
+<div style="position: relative;">
+  <ngx-spinner bdColor = "rgba(0,0,0,0.65)" size = "large" color = "#ffffff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" > Loading... </p></ngx-spinner>
+</div>
+<mat-progress-bar *ngIf="loading" mode="indeterminate">
+
+</mat-progress-bar>
+
+<div
+  *ngIf="this.stocks.length === 0; else tableContent"
+  class="animated fadeIn row"
+>
+  <div class="col-md-12" style="padding: 5px;">
+    <div>
+      <div class="card">
+        <div class="card-body" style="height: 400px;">
+          <div style="padding: 75px 25px;">
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h3 style="word-spacing: 2px;">
+                Tweak your item prices for specific contacts or transactions
+              </h3>
+            </div>
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h6 style="word-spacing: 2px;">
+                (Create and manage your stocks, all in one place.)
+              </h6>
+            </div>
+
+            <div
+              class="col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 40px;
+              "
+            >
+              <div>
+                <div>
+                  <button
+                    style="padding: 10px 25px; border: 1;"
+                    type="button"
+                   [routerLink]="['/stocks/add']"
+                    class="btn btn-primary"
+                  >
+                    CREATE NEW STOCKS
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #tableContent>
+  <div class="row">
+    <div class="col-lg-12" style="padding: 0px;">
+      <div class="card" style="margin: 10px;">
+        <div class="card-header" style="margin: 10px;">
+          <i class="fa fa-align-justify"></i> STOCK DETAILS
+          <input
+            style="
+              margin: 10px;
+              padding: 5px 30px 5px 30px;
+              text-align: center;
+            "
+            type="text"
+            [(ngModel)]="userFilter.product"
+            placeholder="Type to filter by name"
+          />
+
+          <button
+            style="margin: 10px; padding: 5px 40px 5px 40px;"
+            type="button"
+            [routerLink]="['/stocks/add']"
+            class="btn btn-success pull-right"
+          >
+            New
+          </button>
+        </div>
+        <div class="card-body table-responsive-md">
+          <table
+            style="text-align: center;"
+            class="table table-bordered table-hover table-md"
+          >
+            <thead class="thead-light">
+              <tr>
+                <th>Date</th>
+                <th>Stock Point</th>
+                <th>Product</th>
+                <th>Grade</th>
+                <th>openingStock</th>
+                <th>stockIn</th>
+                <th>stockOut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let product of stocks | filterBy: userFilter"
+                [routerLink]="['/stocks/edit', product._id]"
+              >
+                <td>{{ product.date | date: "dd/MM/yyyy" }}</td>
+                <td>{{ product.stockPoint }}</td>
+                <td>{{ product.product }}</td>
+                <td>{{ product.grade }}</td>
+                <td>{{ product.openingStock }}</td>
+                <td>{{ product.stockIn }}</td>
+                <td>{{ product.stockOut }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</ng-template>

@@ -1,0 +1,67 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 mx-auto" style="padding: 0px;">
+          <div class="card mx-2">
+            <div class="card-body ">
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <h1>Register</h1>
+                <p class="text-muted">Create your account</p>
+                
+                   
+                
+                <div class="form-group input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                  </div>
+                    <input type="email" tabindex="1" placeholder="  Email address" style="padding: 10px 12px; border: 1;"  formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                </div>
+
+                <div class="form-group login-label">
+                  
+                  <international-phone-number tabindex="2" style="padding: 10px 12px; border: 1;" formControlName="mobilenumber" style="padding: 0; border: 0;"  [ngClass]="{ 'is-invalid': submitted && f.mobilenumber.errors }" class="form-control" placeholder="Enter mobilenumber" [maxlength]="14" [defaultCountry]="'in'" [required]="true"  name="mobilenumber" [allowedCountries]="['in']"></international-phone-number>
+                  <div *ngIf="submitted && f.mobilenumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.mobilenumber.errors.required">MobileNumber is required</div>
+                    <div *ngIf="f.mobilenumber.errors.minlength">MobileNumber must be 10 digits</div>
+                </div>
+              </div>
+
+                
+                
+                    <div class="form-group input-group mb-3 col" style="padding: 0px;">
+
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-asterisk"></i></span>
+                      </div>
+                      
+                        <input  type="password" tabindex="3" style="padding: 10px 12px; border: 1;" placeholder="Enter password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+                    </div>
+                   
+              
+                <div class="form-group input-group mb-3 form-check">
+                    <input tabindex="4" type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                    <label for="acceptTerms" class="form-check-label">I agree to the Terms of service & Privacy Policy</label>
+                    <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+                </div>
+                <div class="text-center">
+                    <button tabindex="5" style="margin:2px;padding:5px 40px 5px 40px;" class="btn btn-success mb-2 mr-2">Sign Up</button>
+                    <button  style="margin:2px;padding:5px 40px 5px 40px;" [routerLink]="['/login']" routerLinkActive="router-link-active"  class="btn btn-outline-primary ml-2 mb-2" type="reset" (click)="onReset()">Cancel</button>
+                </div>
+            </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

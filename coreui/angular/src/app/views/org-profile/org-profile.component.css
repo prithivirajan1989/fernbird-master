@@ -1,0 +1,11 @@
+
+.customer{
+  margin: 15px 5px;
+  padding: 15px 5px;
+}
+
+  
+
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }

@@ -1,0 +1,113 @@
+<div class="container" style="padding: 0px;" >
+    <div class="col-md-12 " style="padding: 0px;">
+      <div class="card">
+        <div class="card-header">
+          <strong> Add STOCK </strong>
+          <small>Details</small>
+        </div>
+        <div class="card-body">
+    
+          <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <label class="col-md-3">Stock Point :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Stock Point"  formControlName="stockPoint" #stockPoint 
+                [ngClass]="{'is-invalid':detailForm.get('stockPoint').touched && detailForm.get('stockPoint').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Stock Point is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Product Name :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Product Name"  formControlName="product" #product 
+                [ngClass]="{'is-invalid':detailForm.get('product').touched && detailForm.get('product').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Product Name is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Grade :</label>
+              <div class="form-group col-md-5">
+                <select class="form-control" placeholder="Grade"  formControlName="grade" #grade 
+                [ngClass]="{'is-invalid':detailForm.get('grade').touched && detailForm.get('grade').invalid}" >  
+                <option value="0">select</option>  
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div>Grade is required</div>
+                  </div>
+              
+            </div>
+            </div>
+
+          
+
+            <!-- <div class="row">
+              <label class="col-md-3">Unit :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Unit" formControlName="units" #units 
+                [ngClass]="{'is-invalid':detailForm.get('units').touched && detailForm.get('units').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Unit is required</div>
+                </div>
+            </div>
+            </div> -->
+
+            <div class="row">
+              <label class="col-md-3">Opening Stock :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Opening Stock" formControlName="openingStock" #openingStock 
+                [ngClass]="{'is-invalid':detailForm.get('openingStock').touched && detailForm.get('openingStock').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Opening Stock is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Stock In :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Stock In" formControlName="stockIn" #stockIn 
+                [ngClass]="{'is-invalid':detailForm.get('stockIn').touched && detailForm.get('stockIn').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Stock In is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Stock Out :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Stock Out" formControlName="stockOut"  #stockOut 
+                [ngClass]="{'is-invalid':detailForm.get('stockOut').touched && detailForm.get('stockOut').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Stock Out is required</div>
+                </div>
+            </div>
+            </div>
+    
+    
+          
+            
+    
+           
+           
+  
+            <button type="submit"  style="padding:5px 40px 5px 40px;" [disabled]= "detailForm.invalid" class="btn btn-success pull-right">Add Stocks</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  

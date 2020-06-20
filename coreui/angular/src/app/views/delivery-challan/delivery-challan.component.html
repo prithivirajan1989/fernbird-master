@@ -1,0 +1,196 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<div
+  *ngIf="this.challans.length === 0; else tableConent"
+  class="animated fadeIn row"
+>
+  <div class="col-md-12" style="padding: 5px;">
+    <div>
+      <div class="card">
+        <div class="card-body" style="height: 400px;">
+          <div style="padding: 75px 25px;">
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h3 style="word-spacing: 2px;">
+                Deliver Goods effectively!
+              </h3>
+            </div>
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h6 style="word-spacing: 2px;">
+                (Create, customize and print professional Delivery Challans. )
+              </h6>
+            </div>
+
+            <div
+              class="col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 40px;
+              "
+            >
+              <div>
+                <div>
+                  <button
+                    style="padding: 10px 25px; border: 1;"
+                    type="button"
+                    (click)="create()"
+                    class="btn btn-primary"
+                  >
+                    CREATE DELIVERY CHALLAN
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #tableConent>
+  <div class="row">
+    <div class="col-lg-12" style="padding: 0px;">
+      <div class="card" style="margin: 10px;">
+        <div class="card-header" style="margin: 10px;">
+          <i class="fa fa-align-justify"></i>DELIVERY CHALLAN
+          <input
+            style="margin: 10px; padding: 5px 30px 5px 30px;"
+            type="text"
+            [(ngModel)]="userFilter.customerName"
+            placeholder="Type to filter by name"
+          />
+          <button
+            style="margin: 10px; padding: 5px 40px 5px 40px;"
+            type="button"
+            (click)="create()"
+            class="btn btn-success pull-right"
+          >
+            New
+          </button>
+          <div class="btn-group" dropdown>
+            <button
+              type="button"
+              style="padding: 2px 20px 2px 20px;"
+              class="btn btn dropdown-toggle p-0"
+              dropdownToggle
+            >
+              <i class="icon-settings"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a class="dropdown-item" (click)="exportAsXLSX()">
+                <i class="fa fa-file-excel-o" aria-hidden="true"></i> Export to
+                excel</a
+              >
+              <!-- <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="card-body table-responsive-md">
+          <table
+            style="text-align: center;"
+            class="table table-bordered table-hover table-md"
+          >
+            <thead class="thead-light">
+              <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Challan no</th>
+                <th>Challan Date</th>
+                <th>Challan Type</th>
+                <th>Generated Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of challans | filterBy: userFilter">
+                <td>{{ product.customerName }}</td>
+                <td>{{ product.customerNo }}</td>
+                <td>{{ product.customerEmail }}</td>
+                <td>{{ product.challanNo }}</td>
+                <td>{{ product.challanDate | date: "dd/MM/yyyy" }}</td>
+                <td>{{ product.challanType }}</td>
+                <td>{{ product.date | date: "dd/MM/yyyy" }}</td>
+                <td>
+                  <button
+                    tooltip="Delete Invoice"
+                    placement="top"
+                    show-delay="500"
+                    data-toggle="modal"
+                    (click)="dangerModal.show()"
+                    class="btn btn-danger"
+                  >
+                    <i class="fa fa-trash fa-xs"></i>
+                  </button>
+                  <!-- <button
+                    tooltip="Edit Purchase"
+                    placement="top"
+                    show-delay="500"
+                    [routerLink]="['/purchase/edit', product._id]"
+                    class="btn btn-info"
+                  >
+                    <i class="fa fa-pencil-square fa-xs"></i>
+                  </button> -->
+                  <div
+                    bsModal
+                    #dangerModal="bs-modal"
+                    class="modal fade"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-danger" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">
+                            Do you want delete this record?
+                          </h4>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            (click)="dangerModal.hide()"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="button"
+                            (click)="deleteInvoice(product._id)"
+                            class="btn btn-danger"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div> </ng-template
+>>

@@ -1,0 +1,11 @@
+.customClass > a{
+    background-color:silver !important;
+    border-bottom: none !important;
+    outline: 0 !important; 
+    }
+    
+    tab>active{
+    color:rgb(58, 45, 128)
+    }
+
+    

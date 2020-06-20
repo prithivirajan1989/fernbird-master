@@ -1,0 +1,204 @@
+
+
+
+
+  <div class="container " style="padding: 0px;"  >
+    <div class="col-sm-12 " style="padding: 0px;">
+      <div class="card">
+        <div class="card-header" style="margin:10px;">
+          <i class="fa fa-align-justify"></i> ADD PURCHASE 
+          <button style="margin: 10px; padding:5px 30px 5px 30px; "  tooltip="Delete Purchase" placement="top" show-delay="500"  data-toggle="modal" (click)="dangerModal.show()" class="btn btn-danger pull-right">Delete</button>
+          <div bsModal #dangerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-danger" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Do you want delete this record?</h4>
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" (click)="dangerModal.hide()">Cancel</button>
+                  <button type="button" (click)="deletePurchase()" class="btn btn-danger">Delete</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div>
+        </div>
+        <div class="card-body">
+    
+          <form [formGroup]="detailForm" (ngSubmit)="onUpdate()">
+
+            <div class="row">
+              <label class="col-md-3">SI no :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="SI No"  formControlName="sino" #sino [(ngModel)] = "purchase.sino"
+                [ngClass]="{'is-invalid':detailForm.get('sino').touched && detailForm.get('sino').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>SI no is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Vendor Name :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Vendor Name"  formControlName="suplierName" #suplierName [(ngModel)] = "purchase.suplierName"
+                [ngClass]="{'is-invalid':detailForm.get('suplierName').touched && detailForm.get('suplierName').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Suplier Name is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Contact Number :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Contact Number" formControlName="contactNumber" #contactNumber [(ngModel)] = "purchase.contactNumber"
+                [ngClass]="{'is-invalid':detailForm.get('contactNumber').touched && detailForm.get('contactNumber').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Contact Number is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Address :</label>
+              <div class="form-group col-md-5">
+                <textarea type="text" class="form-control" placeholder="Address" formControlName="address" #address  [(ngModel)] = "purchase.address"
+                [ngClass]="{'is-invalid':detailForm.get('address').touched && detailForm.get('address').invalid}"  ></textarea>
+                <div class="invalid-feedback">
+                  <div>Address is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Product :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Product" formControlName="product" #product [(ngModel)] = "purchase.product"
+                [ngClass]="{'is-invalid':detailForm.get('product').touched && detailForm.get('product').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Product is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Grade :</label>
+              <div class="form-group col-md-5">
+                <select class="form-control" placeholder="Grade"  formControlName="grade" #grade [(ngModel)] = "purchase.grade"
+                [ngClass]="{'is-invalid':detailForm.get('grade').touched && detailForm.get('grade').invalid}" >  
+                <option value="0">select</option>  
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div>Grade is required</div>
+                  </div>
+              
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Quality :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Quality" formControlName="quality" #quality [(ngModel)] = "purchase.quality"
+                [ngClass]="{'is-invalid':detailForm.get('quality').touched && detailForm.get('quality').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Quality is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Rate / Kg :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Rate / Kg" formControlName="rate" #rate [(ngModel)] = "purchase.rate"
+                [ngClass]="{'is-invalid':detailForm.get('rate').touched && detailForm.get('rate').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Rate / Kg is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Amount :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Amount"formControlName="amount" #amount [(ngModel)] = "purchase.amount"
+                [ngClass]="{'is-invalid':detailForm.get('amount').touched && detailForm.get('amount').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Amount is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Transport Charge :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Transport Charge" formControlName="transportCharge" #transportCharge [(ngModel)] = "purchase.transportCharge"
+                [ngClass]="{'is-invalid':detailForm.get('transportCharge').touched && detailForm.get('transportCharge').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Transport Charge is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Misc Charge :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Misc Charge" formControlName="miscCharge" #miscCharge [(ngModel)] = "purchase.miscCharge"
+                [ngClass]="{'is-invalid':detailForm.get('miscCharge').touched && detailForm.get('miscCharge').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Misc Charge is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Total Purchase Charge :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Total Purchase Charge"  formControlName="totalPurchaseAmount" #totalPurchaseAmount  [(ngModel)] = "purchase.totalPurchaseAmount"
+                [ngClass]="{'is-invalid':detailForm.get('totalPurchaseAmount').touched && detailForm.get('totalPurchaseAmount').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Total Purchase Charge is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Payment Status :</label>
+              <div class="form-group col-md-5">
+                <select  class="form-control" formControlName="paymentStatus" #paymentStatus [(ngModel)] = "purchase.paymentStatus"
+                [ngClass]="{'is-invalid':detailForm.get('paymentStatus').touched && detailForm.get('paymentStatus').invalid}"  >
+                      
+                  <option value="Active">Active</option>
+                  <option value="Passive">Passive</option>
+                  <option value="Retired">Pending</option>
+                </select>
+                <div class="invalid-feedback">
+                  <div>Total Purchase Charge is required</div>
+                </div>
+              
+               
+            </div>
+            </div>
+
+    
+    
+         
+            <button type="submit" style="margin: 10px; padding:5px 30px 5px 30px; " [disabled]= "detailForm.invalid" class="btn btn-info pull-right">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+
+
+
+
+  
+  
+  

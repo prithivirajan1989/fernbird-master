@@ -1,0 +1,55 @@
+<!-- <div class="container mt-5 ">
+  <div class="card-group col-lg-8 mx-auto mt-1 ">
+    <div class="card-body ">
+      <div class="card p-4">
+        <form (submit)="verifyOtpSubmit()">
+          <div class="container new-login-area">
+            <div id='verify-otp' class="login-setup-section">
+
+              <h3 class="request-otp-header">Verify OTP</h3>
+              <div class="form-group login-label">
+                <label>One Time Password</label>
+                <input type="hidden" [(ngModel)]="id" name="id" value="{{OtpId.id}}">
+                <input [(ngModel)]="verifyOtp" name="verifyOtp" type="text" class="form-control input-edit"
+                  placeholder="Enter the otp" required>
+                <label class="pull-right resend-otp">Resend otp</label>
+              </div>
+              <button type="submit" class="btn btn-default btn-lg btn-block request-otp ">Verify</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+    <div class="card-group col-lg-8 mx-auto mt-5 ">
+        <div class="card-body ">
+            <div class="card p-4">
+             <form (submit)="verifyOtpSubmit()" >
+                <div class="container new-login-area">
+                    <div id='sign-in' class='login-setup-section'>
+                        <h3 class="request-otp-header">Verify Otp</h3>
+                        <div class="form-group login-label">
+                            <label > Please Enter The Otp Sent To Your Registerd Mobile number</label>
+                            <!-- <input type="text" [(ngModel)]="id" name="id" value="{{Id.id}}"> -->
+                            <input [(ngModel)]="verifyOtp" name="verifyOtp" type="tel" class="form-control input-edit" placeholder="Enter the Otp"  required>
+                        </div>
+                        <button style="padding:5px 40px 5px 40px;" type="submit" class="btn btn-default btn-lg btn-block request-otp" id='request-otp'>verify
+                            otp</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   
+
+
+
+
+

@@ -1,0 +1,313 @@
+
+
+  
+
+  <div class=" animated fadeIn row" >
+    <div class="col-md-12" style="padding: 0px;">
+      <div>
+        <div class="card ">
+          <div class="card-header">
+            Delivery challan
+          </div>
+          <div class="card-body" style="padding: 15px;">
+            <form #resumeForm="ngForm">
+              <div class="row">
+                <div class="col-md-12" style="padding: 0px;" >
+                  <div >
+                    <div >
+                      <h5 class="card-title d-flex align-items-center">
+                        <i class="material-icons">
+                          account_circle
+                        </i>
+                        Customer Details</h5>
+
+
+                        <div class="row">
+                          <label class="col-md-3">Customer Name</label>
+                          <div class="form-group col-md-6">
+                            <input type="text" class="form-control" [(ngModel)]="resume.name" name="name" placeholder="Name"
+                            #Name="ngModel" required
+                            [ngClass]="{'is-invalid': Name.invalid && (Name.touched || resumeForm.submitted) }">
+                            
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3">Address</label>
+                          <div class="form-group col-md-6">
+                            <textarea   rows="3" type="text" class="form-control" [(ngModel)]="resume.address" name="address"
+                                placeholder="Address" #Address="ngModel" required
+                                [ngClass]="{'is-invalid': Address.invalid && (Address.touched || resumeForm.submitted) }"></textarea>
+                            
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label class="col-md-3">Contact Number</label>
+                          <div class="form-group col-md-6">
+                            <input type="tel" minlength="10" class="form-control" [(ngModel)]="resume.contactNo" name="contactNo"
+                              placeholder="Contact No." #ContactNo="ngModel" required
+                              [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || resumeForm.submitted) }">
+                            
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <label class="col-md-3">Email Id</label>
+                          <div class="form-group col-md-6">
+                            <input type="email" class="form-control" [(ngModel)]="resume.email" name="emailId"
+                            placeholder="Email ID" #Email="ngModel" required
+                            [ngClass]="{'is-invalid': Email.invalid && (Email.touched || resumeForm.submitted) }">
+                          </div>
+                        </div>
+
+
+                    
+                    </div>
+                  </div>
+          
+                  <!--gstin -->
+          
+                  <div >
+                    <div>
+                      <h5 class="card-title d-flex align-items-center">
+                        <i class="material-icons">
+                          account_circle
+                        </i>
+                        challan Details</h5>
+
+                        <div class="row">
+                          <label class="col-md-3">Challan No</label>
+                          <div class="form-group col-md-6">
+                            <input type="tel" class="form-control" [(ngModel)]="resume.challanNo" name="challanNo" placeholder="DC-00001"
+                            #ChallanNo="ngModel" required
+                            [ngClass]="{'is-invalid': ChallanNo.invalid && (ChallanNo.touched || resumeForm.submitted) }">
+                            
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <label class="col-md-3">Challan Date*</label>
+                          <div class="form-group col-md-6">
+                            <input type="text" class="form-control" [(ngModel)]="resume.challanDate" name="challanDate" 
+                            placeholder="Enter the Date" #ChallanDate="ngModel" required
+                            [ngClass]="{'is-invalid': ChallanDate.invalid && (ChallanDate.touched || resumeForm.submitted) }"
+                            bsDatepicker/>
+                            
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <label class="col-md-3">Challan Type*</label>
+                          <div class="form-group col-md-6">
+                            <select class="form-control" name="challanType" [(ngModel)]="resume.challanType"
+                            #ChallanType="ngModel" required
+                            [ngClass]="{'is-invalid': ChallanType.invalid && (ChallanType.touched || resumeForm.submitted) }">
+                              <option value="0">Select</option>
+                              <option value="Product Delivery">Product Delivery</option>
+                              <option value="Job Work">Job work</option>
+                              <option value="Supply">Supply</option>
+                            </select>
+                            
+                          </div>
+                        </div>
+
+
+                     
+                    </div>
+                  </div>
+          
+                  <!-- Skills -->
+                  <!-- <div class="shadow-sm card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between card-title">
+                        <h4 class="d-flex align-items-center">
+                          <i class="material-icons">
+                            timeline
+                          </i>
+                          Skills</h4>
+                        <button class="btn btn-primary" (click)="addSkill()">+</button>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4" *ngFor="let s of resume.skills; let i=index">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="s.value"
+                              placeholder="e.g. Java / Angular / .Net " #Skill="ngModel" required
+                              [ngClass]="{'is-invalid': Skill.invalid && (Skill.touched || resumeForm.submitted) }">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+          
+          
+                  <!-- Experience -->
+                  <!-- <div class="shadow-sm card">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between card-title">
+                        <h4 class="d-flex align-items-center">
+                          <i class="material-icons">
+                            timeline
+                          </i>
+                          Experience</h4>
+                        <button class="btn btn-primary" (click)="addExperience()">+</button>
+                      </div>
+                      <div class="row" *ngFor="let ex of resume.experiences; let i=index">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="employer{{i}}" [(ngModel)]="ex.employer"
+                              placeholder="Employer" #Employer="ngModel" required
+                              [ngClass]="{'is-invalid': Employer.invalid && (Employer.touched || resumeForm.submitted) }">
+                          </div>
+                          <div class="form-group">
+                            <div class="form-group">
+                              <textarea class="form-control" name="jobDescription{{i}}" [(ngModel)]="ex.jobDescription" rows="3"
+                                placeholder="Job Description"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="jobTitle{{i}}" [(ngModel)]="ex.jobTitle"
+                              placeholder="Job Title" #JobTitle="ngModel" required
+                              [ngClass]="{'is-invalid': JobTitle.invalid && (JobTitle.touched || resumeForm.submitted) }">
+                          </div>
+                          <div class="form-group">
+                            <input type="number" class="form-control" name="exInMonths{{i}}" [(ngModel)]="ex.experience"
+                              placeholder="Experience in months" #Experience="ngModel" required
+                              [ngClass]="{'is-invalid': Experience.invalid && (Experience.touched || resumeForm.submitted) }">
+                          </div>
+                        </div>
+                      </div>
+          
+                    </div>
+                  </div> -->
+          
+                  <!-- Education -->
+                  <div class="d-flex justify-content-between card-title">
+                    <h5 class="d-flex align-items-center">
+                      <i class="material-icons">
+                        shopping_cart
+                      </i>
+                      Products</h5>
+                      <a style="color:darkblue; text-decoration: underline;" (click)="addEducation()">Add another line</a>
+                    
+                  </div>
+                  <div class="grid-table table-responsive">
+                    <div class="thead" style="text-align: center;" >
+                      <div class="tr">
+                        <div style="width: 200px;" class="td">Item Details</div>
+                        <div style="width: 200px;" class="td">Quantity</div>
+                        <div style="width: 200px;" class="td">Rate	</div>
+                        <div style="width: 200px;" class="td">Discount	</div>
+                        <div style="width: 200px;" class="td">Amount	</div>
+                        
+                      </div>
+                    </div>
+                    <div class="tbody">
+                       <form *ngFor="let ed of resume.delivery let i=index" class="tr" (submit)="recordSubmit(fg)" >
+                         <div class="td form-group ">
+                          <select class="form-control" placeholder="ItemDetails" name="itemDetails{{i}}" [(ngModel)]="ed.itemDetails"
+                          #ItemDetails="ngModel" required
+                          [ngClass]="{'is-invalid': ItemDetails.invalid && (ItemDetails.touched || resumeForm.submitted) }">
+                          <option [value]="d" *ngFor="let d of products">{{d}}</option>
+                        </select>
+                         </div>
+                         <div class="td form-group">
+                          <input type="tel" class="form-control" name="quantity{{i}}" [(ngModel)]="ed.quantity"
+                              placeholder="Quantity" #Quantity="ngModel" required
+                              [ngClass]="{'is-invalid': Quantity.invalid && (Quantity.touched || resumeForm.submitted) }" (change)="onInput($event,resume.delivery)">
+                        </div>
+                        <div class="td form-group">
+                          <input type="tel" class="form-control" name="rate{{i}}" [(ngModel)]="ed.rate"
+                              placeholder="Rate" #Rate="ngModel" required
+                              [ngClass]="{'is-invalid': Rate.invalid && (Rate.touched || resumeForm.submitted) }"  (change)="onInput($event,resume.delivery)" >
+                        </div>
+                        <div class="td form-group">
+                          <input type="tel" class="form-control" name="discount{{i}}" [(ngModel)]="ed.discount" [(ngModel)]="discount"
+                          placeholder="Discount" #Discount="ngModel" required
+                          [ngClass]="{'is-invalid': Discount.invalid && (Discount.touched || resumeForm.submitted) }"   (change)="onInput($event,resume.delivery)" >
+                        </div>
+
+                        <div class="td form-group">
+                          <input type="tel" class="form-control" name="ammount{{i}}" [(ngModel)]="ed.ammount" [(ngModel)]="ammount"
+                          placeholder="Ammount" #Ammount="ngModel" required
+                          [ngClass]="{'is-invalid': Ammount.invalid && (Ammount.touched || resumeForm.submitted) }"  >
+                        </div>
+                       
+                        
+                       </form>
+                    </div>
+                  </div>
+                  
+          
+                  <!-- Other Details -->
+          
+                  <div  style="margin-top: 30px;">
+                    <div >
+                      <h6 class="card-title d-flex align-items-center">
+                        <i class="material-icons"> list </i>Terms & Conditions</h6>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <textarea type="text" class="form-control" #terms= "ngModel" [(ngModel)]="resume.otherDetails" name="otherDetails"
+                              rows="2" required [ngClass]="{'is-invalid': terms.invalid && (terms.touched || resumeForm.submitted) }" ></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- <div class="col-md-4 mt-10" >
+
+                  <div class="shadow-sm card action-buttons">
+                    <button (click)="resumeForm.valid ? generatePdf('open') : ''"
+                      class="btn btn-success rounded-pill d-flex align-items-center justify-content-center">
+                      <i class="material-icons">
+                        picture_as_pdf
+                      </i> <span>Preview</span></button>
+                    <button  (click)="invoiceGenerated()"  (click)="resumeForm.valid ? generatePdf('download') : ''"
+                      class="btn btn-info rounded-pill d-flex align-items-center justify-content-center">
+                      <i class="material-icons">
+                        cloud_download
+                      </i><span>Save</span></button>
+                    <button (click)="resumeForm.valid ? generatePdf('print') : ''"
+                      class="btn btn-primary rounded-pill d-flex align-items-center justify-content-center">
+                      <i class="material-icons">
+                        print
+                      </i><span>Print</span></button>
+          
+                    <button type='reset' (click)="resetForm()"
+                      class="btn btn-warning rounded-pill d-flex align-items-center justify-content-center">
+                      <i class="material-icons">
+                        clear
+                      </i><span>Reset</span></button>
+                  </div>
+          
+                  <div class="card p-4">
+                    <div class="form-group">
+                      <label class="h4 mb-3" for="">Logo</label>
+                      <input type="file" class="form-control-file" (change)="fileChanged($event)" aria-describedby="fileHelpId">
+                    </div>
+                    <img *ngIf="resume.profilePic" [src]="resume.profilePic" class="img-thumbnail">
+                  </div>
+                </div> -->
+
+                <div class="text-center col-md-12">
+                  <button  style="margin:2px;padding:10px 50px 10px 50px;" (click)="resumeForm.valid ? generatePdf('open') : ''" class="btn btn-warning mb-2 mr-2">
+                    Preview</button>
+                  <button  style="margin:2px;padding:10px 50px 10px 50px;" (click)="invoiceGenerated()"  (click)="resumeForm.valid ? generatePdf('download') : ''" class="btn btn-success mb-2 mr-2"> 
+                     Save</button>
+                  <button  style="margin:2px;padding:10px 50px 10px 50px;"  (click)="resetForm()" class="btn btn-outline-danger ml-2 mb-2" type="reset" >
+                   Reset</button>
+              </div>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>
+  

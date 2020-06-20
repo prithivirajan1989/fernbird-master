@@ -1,0 +1,7 @@
+<div class="chart-wrapper">
+  <canvas style="height: 100px;" baseChart class="chart"
+  [data]="doughnutChartData"
+  [labels]="doughnutChartLabels"
+  [chartType]="doughnutChartType"
+  (chartHover)="chartHovered($event)"
+  (chartClick)="chartClicked($event)"></canvas>

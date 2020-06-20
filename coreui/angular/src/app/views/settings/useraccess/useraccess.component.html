@@ -1,0 +1,64 @@
+<div class="container" style="margin: auto;" >
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <strong> Edit Users </strong>
+        <small>Access</small>
+      </div>
+      <div class="card-body">
+  
+        <form [formGroup]="detailForm" (ngSubmit)="onUpdate()">
+          <div class="row" >
+            <div class="col-md-2">
+              <div class="form-group">
+                <input type="text" [(ngModel)] = "customer.name" class="form-control"  
+                  placeholder="Name" formControlName="name"  required
+                  >
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="email" [(ngModel)] = "customer.email" class="form-control"
+                  placeholder="Email" formControlName="email" required
+                  >
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+                <input type="tel" [(ngModel)] = "customer.mobilenumber" class="form-control"
+                  placeholder="Mobile Number" formControlName="mobilenumber" required
+                  >
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
+               
+                    <select  class="form-control" [(ngModel)] = "customer.role" formControlName="role" placeholder="Role" 
+                     required
+                     >     
+                          <option value="1">Admin</option>
+                          <option value="2">It</option>
+                          <option value="3">Marketing</option>
+                     </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <input type="password" [(ngModel)] = "customer.password" class="form-control" 
+                  placeholder="Password"  formControlName="password" required
+                  >
+              </div>
+            </div>
+           
+          </div>
+           
+          <button type="submit" [disabled]= "detailForm.invalid" class="btn btn-success pull-right">Update User</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+

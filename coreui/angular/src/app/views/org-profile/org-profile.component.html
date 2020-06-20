@@ -1,0 +1,237 @@
+<div class="container" style="padding: 0px;" >
+  <div class="col-md-12 pull-left" style="padding: 0;">
+    <div class="card" style="padding: 5px;">
+      <div class="card-header">
+        <h5> Organization Details </h5>
+       
+      </div>
+      <div class="card-body" style="padding: 15px;">
+         <div class="col-md-12">
+            <form class="form-horizontal" style="margin-bottom: 50px; margin-top: 20px;" >
+
+
+                <div class="form-group row ">
+                  <div class=" col-md-3 ">
+                    <img [src]="brandUrl" style="width: 150px; height: 80px; align-items: center; " class="img-fluid">
+                  </div>
+                  <div *ngIf="editbutton">
+                    <button (click)="onProfileImageEdit()"  style=" padding:5px 20px 5px 20px; margin-top: 30px; margin-right: 10px; margin-left: 10px; margin-bottom: 5px;"   class="btn btn-primary" type="button"> EDIT BRAND LOGO </button>
+                  </div>
+                  <div  *ngIf="editProfileImg" class="col-md-3" style="margin-top: 20px;" >
+                    <input type="file"  class="form-control" (change)="onFileSelected($event.target.files)" required >
+                    <button  style=" padding:2px 20px 2px 20px; margin-top: 15px;" type="submit"  class="btn btn-outline-success pull-left">UPLOAD</button>
+                    <button style=" padding:2px 20px 2px 20px;margin-top: 15px;" (click)="onProfileClose()" type="button" class="btn btn-outline-primary pull-right">CANCEL</button>
+                  </div>
+                  <div class=" col-lg-5 ">
+                    <p>This logo will appear on the documents (estimates, invoices, etc.) that are created.
+                        Preferred Image Size: 240px x 240px @ 72 DPI Maximum size of 1MB.</p>
+                  </div>
+                </div>
+                
+                
+                    
+                  
+      
+                
+               
+              </form>
+         </div>
+        
+
+
+        
+  
+        <form [formGroup]="detailForm" (ngSubmit)="onProfileSubmit()">
+         
+         
+        
+            <div class="row">
+                <label class="col-md-3"> Organization Name :</label>
+                <div class="form-group col-md-5">
+                  <input type="text" class="form-control" placeholder="Organization Name" formControlName="organizationName" #organizationName 
+                  [ngClass]="{'is-invalid':detailForm.get('organizationName').touched && detailForm.get('organizationName').invalid}"  />
+                  <div class="invalid-feedback">
+                    <div>Organization Name is required</div>
+                  </div>
+              </div>
+              </div>
+
+              <!-- <div class="row">
+                <label class="col-md-3"> Industry :</label>
+                <div class="form-group col-md-5">
+                  <input type="text" class="form-control" placeholder="Industry" formControlName="industry" #industry 
+                  [ngClass]="{'is-invalid':detailForm.get('industry').touched && detailForm.get('industry').invalid}"  />
+                  <div class="invalid-feedback">
+                    <div>Industry is required</div>
+                  </div>
+              </div>
+              </div> -->
+
+             
+              <div class="row" >
+                <label class="col-md-3">Industry :</label>
+                <div  class="form-group col-md-5" >
+
+
+                  <mat-form-field style="width: 310px;" >
+
+
+                    <mat-select class="form-control" formControlName="industry" #industry #singleSelect
+                    [ngClass]="{'is-invalid':detailForm.get('industry').touched && detailForm.get('industry').invalid}">
+                      <mat-option>
+                        <ngx-mat-select-search [formControl]="bankFilterCtrl"  placeholderLabel="Find industry..." 
+                        noEntriesFoundLabel="'no matching found'"></ngx-mat-select-search>
+                      </mat-option>
+                
+                      <mat-option *ngFor="let bank of filteredBanks | async" [value]="bank">
+                        {{bank.name}}
+                      </mat-option>
+                    </mat-select>
+                    <div class="invalid-feedback">
+                      <div>Industry is required</div>
+                    </div>
+                  </mat-form-field>
+
+                  
+                    
+                 
+                </div>
+              </div>
+
+              <div class="row" >
+                <label class="col-md-3">Bussiness Location :</label>
+                <div  class="form-group col-md-5" >
+                    <mat-form-field  style="width: 300px;" >
+                     
+                        <mat-select class="form-control" formControlName="bussinessLocation" #bussinessLocation 
+                        [ngClass]="{'is-invalid':detailForm.get('bussinessLocation').touched && detailForm.get('bussinessLocation').invalid}">
+                          <mat-option>None</mat-option>
+                          <mat-option  *ngFor="let cust of bussinessLocations" value="{{cust}}">{{cust}}</mat-option>
+                        </mat-select>
+                        <div class="invalid-feedback">
+                            <div>Bussiness Location is required</div>
+                          </div>
+                        
+                      </mat-form-field>
+                    
+                 
+                </div>
+              </div>
+
+
+          
+
+            
+
+           <div class="row" >
+             <div class="col-md-3" class="customer">
+              <h4   > Organization Address </h4>
+             </div>
+           </div> 
+           
+         
+
+          <div class="row ">
+            <div class="col-lg-12">
+
+                <div class="row">
+                 <label class="col-md-3" >Street 1</label>
+                <div class="form-group col-md-6">       
+                 <textarea   rows="1" type="text" class="form-control"  formControlName="street1" #street1
+                        placeholder="Street 1"  required
+                        [ngClass]="{'is-invalid':detailForm.get('street1').touched && detailForm.get('street1').invalid}"></textarea>
+                        <div class="invalid-feedback">
+                            <div>Street 1 is required</div>
+                          </div>
+                </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-md-3" >Street 2</label>
+                   <div class="form-group col-md-6">       
+                    <textarea   rows="1" type="text" class="form-control"  formControlName="street2" #street2
+                           placeholder="Street 2"  
+                           [ngClass]="{'is-invalid':detailForm.get('street2').touched && detailForm.get('street2').invalid}"></textarea>
+                           <div class="invalid-feedback">
+                               <div>Street 2 is required</div>
+                             </div>
+                   </div>
+                   </div>
+
+              
+            
+    
+                <div class="row">
+                    <label class="col-md-3"> City :</label>
+                    <div class="form-group col-md-5">
+                      <input type="text" class="form-control" placeholder="City"  placeholder="City" formControlName="city"  #city
+                      [ngClass]="{'is-invalid':detailForm.get('city').touched && detailForm.get('city').invalid}"  />
+                      <div class="invalid-feedback">
+                        <div>City is required</div>
+                      </div>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="col-md-3"> State :</label>
+                    <div class="form-group col-md-5">
+                      <input type="text" class="form-control" placeholder="City" placeholder="State" formControlName="state" #state
+                      [ngClass]="{'is-invalid':detailForm.get('state').touched && detailForm.get('state').invalid}"  />
+                      <div class="invalid-feedback">
+                        <div>State is required</div>
+                      </div>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="col-md-3"> Zip Code :</label>
+                    <div class="form-group col-md-5">
+                      <input type="text" class="form-control" placeholder="City" placeholder="Zip Code" formControlName="zipcode" #zipcode
+                      [ngClass]="{'is-invalid':detailForm.get('zipcode').touched && detailForm.get('zipcode').invalid}"  />
+                      <div class="invalid-feedback">
+                        <div>Zip Code is required</div>
+                      </div>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <label class="col-md-3"> Phone :</label>
+                    <div class="form-group col-md-5">
+                      <input type="text" class="form-control" placeholder="Phone" placeholder="Phone" formControlName="phone" #phone
+                      [ngClass]="{'is-invalid':detailForm.get('phone').touched && detailForm.get('phone').invalid}"  />
+                      <div class="invalid-feedback">
+                        <div>Phone is required</div>
+                      </div>
+                  </div>
+                  </div>
+              
+              
+
+                
+                   
+                  
+                    
+                 
+              
+            
+            
+    
+            
+              
+    
+             
+            </div>
+          </div>
+            
+
+         
+          
+         
+          
+          <button style="padding:5px 40px 5px 40px; " [disabled]= "detailForm.invalid" type="submit" class="btn btn-primary pull-right">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,307 @@
+<div  class="animated fadeIn " >
+  <div class="container" style="padding: 0px;" >
+    <div class="col-md-12" style="padding: 0px;" >
+      <div class="card">
+        <div class="card-header">
+          <strong> Add Customer </strong>
+          <small>Details</small>
+        </div>
+        <div class="card-body">
+
+          <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <label class="col-md-3">SI no :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="SI No"  formControlName="sino" #sino
+                [ngClass]="{'is-invalid':detailForm.get('sino').touched && detailForm.get('sino').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>SI No is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Customer Name :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Customer Name"  formControlName="customerName" #customerName
+                [ngClass]="{'is-invalid':detailForm.get('customerName').touched && detailForm.get('customerName').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Customer Name is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3"> Customer Address :</label>
+              <div class="form-group col-md-5">
+                <textarea type="text" rows="3" class="form-control" placeholder="Customer Address"  formControlName="address" #address
+                [ngClass]="{'is-invalid':detailForm.get('address').touched && detailForm.get('address').invalid}"  ></textarea>
+                <div class="invalid-feedback">
+                  <div>Customer Address is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3"> Customer City :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Customer City"  formControlName="city" #city
+                [ngClass]="{'is-invalid':detailForm.get('city').touched && detailForm.get('city').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Customer City is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3"> Customer State :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Customer State" formControlName="state" #state
+                [ngClass]="{'is-invalid':detailForm.get('state').touched && detailForm.get('state').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Customer State is required</div>
+                </div>
+            </div>
+            </div>
+
+
+            <div class="row">
+              <label class="col-md-3"> Customer Number :</label>
+              <div class="form-group col-md-5">
+                <input type="tel" class="form-control" placeholder="Customer Number" formControlName="contactNumber" #contactNumber
+                [ngClass]="{'is-invalid':detailForm.get('contactNumber').touched && detailForm.get('contactNumber').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Customer Number is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Delivery Mode :</label>
+              <div class="form-group col-md-5">
+                <select  class="form-control" formControlName="deliveryMode" placeholder="Delivey Mode" #deliveryMode
+                [ngClass]="{'is-invalid':detailForm.get('deliveryMode').touched && detailForm.get('deliveryMode').invalid}" >
+                  <option value="Train">Train</option>
+                  <option value="Bus">Bus</option>
+                  <option value="Lorry">Lorry</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div>Delivery Mode is required</div>
+                  </div>
+
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Status :</label>
+              <div class="form-group col-md-5">
+                <select  class="form-control" formControlName="status" placeholder="Status" #status
+                [ngClass]="{'is-invalid':detailForm.get('status').touched && detailForm.get('status').invalid}" >
+                <option value="Active">Active</option>
+                <option value="Passive">Passive</option>
+                <option value="Retired">Retired</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div>Status is required</div>
+                  </div>
+
+            </div>
+            </div>
+
+
+
+
+            <button style="margin: 10px; padding:5px 30px 5px 30px;" type="submit"  [disabled]= "detailForm.invalid" class="btn btn-success pull-right">Add Customer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- <div class="container" style="margin: auto;" >
+  <div class="col-md-12 pull-left">
+    <div class="card">
+      <div class="card-header">
+        <h5> New Customer </h5>
+
+      </div>
+      <div class="card-body">
+
+
+        <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group row">
+            <label class="col-md-2 col-form-label" for="inline-radios">Customer Type</label>
+            <div class="col-md-9 col-form-label">
+              <div class="form-check form-check-inline mr-1" >
+                <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">Bussiness</label>
+              </div>
+              <div class="form-check form-check-inline mr-1">
+                <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">Individual</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row ">
+            <label class="col-md-2">Primary Contact</label>
+            <div class="form-group col-md-2">
+              <select  class="form-control" formControlName="saluation" >
+                <option value="0">Saluation</option>
+                <option value="1">Mr.</option>
+                <option value="2">Mrs.</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <input type="tel" class="form-control" placeholder="First Name" formControlName="firstname" >
+            </div>
+            <div class="form-group col-md-2">
+              <input type="text" class="form-control" placeholder="Laste Name" formControlName="lastName" >
+            </div>
+          </div>
+
+
+          <div class="row">
+            <label class="col-md-2">Company Name</label>
+            <div class="form-group col-md-4">
+
+              <input type="text" class="form-control" placeholder="Custome Name" formControlName="customerName" >
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-md-2" >Company Display Name#</label>
+            <div class="form-group col-md-4">
+
+              <input type="text" class="form-control" placeholder="Customer Display Name" formControlName="customerDisplayName" >
+            </div>
+          </div>
+          <div class="row">
+            <label class="col-md-2" >Company Number</label>
+            <div class="form-group col-md-3">
+
+              <input type="tel" class="form-control" placeholder="Customer Number" formControlName="customerNumber" >
+            </div>
+          </div>
+
+          <h5 class="customer" > Customer Address</h5>
+
+          <div class="row ">
+            <div class="col-lg-6">
+              <h6 class="customer">  Billing Address</h6>
+              <div class="row">
+                <label class="col-md-2" >Country</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control" placeholder="Country" formControlName="country" >
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-2" >Address</label>
+                <div class="form-group col-md-8">
+
+                  <textarea cols="40" rows="3">Street1</textarea>
+                  <textarea cols="40" rows="3">Street2</textarea>
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-2" >City</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control"  placeholder="City" formControlName="city" >
+                </div>
+              </div>
+
+              <div class="row">
+                <label class="col-md-2" >State</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control " placeholder="State" formControlName="state" >
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-2" >Zip Code</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control" placeholder="Zip Code" formControlName="zipCode" >
+                </div>
+              </div>
+
+              <div class="row">
+                <label class="col-md-2" >Phone</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control" placeholder="Phone" formControlName="phone" >
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6">
+              <h6 class="customer" > Shipping Address</h6>
+              <div class="row">
+                <label class="col-md-2" >Country</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control" placeholder="Country" formControlName="country" >
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-2" >Address</label>
+                <div class="form-group col-md-8">
+
+                  <textarea cols="40" rows="3">Street1</textarea>
+                  <textarea cols="40" rows="3">Street2</textarea>
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-2" >City</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control"  placeholder="City" formControlName="city" >
+                </div>
+              </div>
+
+              <div class="row">
+                <label class="col-md-2" >State</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control " placeholder="State" formControlName="state" >
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-2" >Zip Code</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control" placeholder="Zip Code" formControlName="zipCode" >
+                </div>
+              </div>
+
+              <div class="row">
+                <label class="col-md-2" >Phone</label>
+                <div class="form-group col-md-8">
+
+                  <input type="tel" class="form-control" placeholder="Phone" formControlName="phone" >
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+          <button style="padding:5px 40px 5px 40px; " type="submit" [disabled]= "detailForm.invalid" class="btn btn-success pull-right">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div> -->
+

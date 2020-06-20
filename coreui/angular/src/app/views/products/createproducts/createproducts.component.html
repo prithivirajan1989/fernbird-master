@@ -1,0 +1,150 @@
+<div class="container " style=" padding: 0;"  >
+  <div class="col-md-12" style="padding: 0;">
+    <div class="card">
+      <div class="card-header">
+        <strong> Add Product </strong>
+        <small>Details</small>
+      </div>
+      <div class="card-body">
+  
+        <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <label class="col-md-3">Item Code :</label>
+            <div class="form-group col-md-5">
+              <input type="text" class="form-control" placeholder="Product Code" formControlName="itemcode" #itemcode 
+              [ngClass]="{'is-invalid':detailForm.get('itemcode').touched && detailForm.get('itemcode').invalid}"  />
+              <div class="invalid-feedback">
+                <div>Product Code is required</div>
+              </div>
+          </div>
+          </div>
+
+          <div class="row">
+            <label class="col-md-3">Item Name :</label>
+            <div class="form-group col-md-5">
+              <input type="text" class="form-control" placeholder="Product Name" formControlName="itemname" #itemname 
+              [ngClass]="{'is-invalid':detailForm.get('itemname').touched && detailForm.get('itemname').invalid}"/>
+              <div class="invalid-feedback">
+                <div>Product Name is required</div>
+              </div>
+          </div>
+          </div>
+
+          <div class="row">
+              <label class="col-md-3">Unit :</label>
+              <div class="form-group col-md-5">
+                <select class="form-control" placeholder="Unit"  formControlName="unit" #unit 
+                [ngClass]="{'is-invalid':detailForm.get('unit').touched && detailForm.get('unit').invalid}" >  
+                <option value="0">select</option>  
+                <option value="Box">Box</option>
+                <option value="cm">cm</option>
+                <option value="dz">dz</option>
+                <option value="ft">ft</option>
+                <option value="g">g</option>
+                <option value="in">in</option>
+                <option value="kg">kg</option>
+                <option value="km">km</option>
+                <option value="lb">lb</option>
+                <option value="mg">mg</option>
+                <option value="m">m</option>
+                <option value="pcs">pcs</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div>Unit is required</div>
+                  </div>
+              
+            </div>
+            </div>
+
+          <div class="row">
+            <label class="col-md-3">Grade :</label>
+            <div class="form-group col-md-5">
+              <select class="form-control" placeholder="Grade"  formControlName="grade" #grade 
+              [ngClass]="{'is-invalid':detailForm.get('grade').touched && detailForm.get('grade').invalid} ">  
+              <option value="0">select</option>  
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+                </select>
+                <div class="invalid-feedback">
+                  <div>Grade is required</div>
+                </div>
+            
+          </div>
+          </div>
+
+          <div class="row">
+              <label class="col-md-3">Dimension length :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Dimension length " formControlName="dlength" #dlength 
+                />
+                <div class="invalid-feedback">
+                  <div>Length is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Dimension width :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Dimension width" formControlName="dwidth" #dwidth 
+                />
+                <div class="invalid-feedback">
+                  <div>Width is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Weight :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Weight" formControlName="weight" #weight 
+                />
+                <div class="invalid-feedback">
+                  <div>Weight is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Selliing Price :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Selliing Price" formControlName="sellingprice" #sellingprice 
+                [ngClass]="{'is-invalid':detailForm.get('sellingprice').touched && detailForm.get('sellingprice').invalid}"/>
+                <div class="invalid-feedback">
+                  <div>Selling Price is required</div>
+                </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <label class="col-md-3">Purchase Price :</label>
+              <div class="form-group col-md-5">
+                <input type="text" class="form-control" placeholder="Purchase Price" formControlName="purchaseprice" #purchaseprice 
+                [ngClass]="{'is-invalid':detailForm.get('purchaseprice').touched && detailForm.get('purchaseprice').invalid}"  />
+                <div class="invalid-feedback">
+                  <div>Purchase Price is required</div>
+                </div>
+            </div>
+            </div>
+
+          <div class="row">
+              <label class="col-md-3"> Description :</label>
+              <div class="form-group col-md-5">
+                <textarea type="text" rows="3" class="form-control" placeholder="Description"  formControlName="description" #description 
+                ></textarea>
+                <div class="invalid-feedback">
+                  <div>Decription is required</div>
+                </div>
+            </div>
+            </div>
+          <button style=" margin: 10px;padding:5px 40px 5px 40px;" type="submit" [disabled]= "detailForm.invalid" class="btn btn-success pull-right">Add Products</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</div>
+

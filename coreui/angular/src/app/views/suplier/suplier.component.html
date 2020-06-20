@@ -1,0 +1,128 @@
+<div style="position: relative;">
+  <ngx-spinner bdColor = "rgba(0,0,0,0.65)" size = "large" color = "#ffffff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" > Loading... </p></ngx-spinner>
+</div>
+
+<div
+  *ngIf="this.supliers.length === 0; else tableContent"
+  class="animated fadeIn row"
+>
+  <div class="col-md-12" style="padding: 5px;">
+    <div>
+      <div class="card">
+        <div class="card-body" style="height: 400px;">
+          <div style="padding: 75px 25px;">
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h3 style="word-spacing: 2px;">
+                Business is no fun without people.
+              </h3>
+            </div>
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h6 style="word-spacing: 2px;">
+                (Create and manage your contacts, all in one place. )
+              </h6>
+            </div>
+
+            <div
+              class="col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 40px;
+              "
+            >
+              <div>
+                <div>
+                  <button
+                    style="padding: 10px 25px; border: 1;"
+                    type="button"
+                    (click)="create()"
+                    class="btn btn-primary"
+                  >
+                    CREATE NEW VENDOR
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #tableContent>
+  <div>
+    <div class="row">
+      <div class="col-lg-12" style="padding: 0px;">
+        <div class="card" style="margin: 10px;">
+          <div class="card-header" style="margin: 10px;">
+            <i class="fa fa-align-justify"></i> VENDOR DETAILS
+            <input
+              style="margin: 10px; padding: 5px 30px 5px 30px;"
+              type="text"
+              [(ngModel)]="userFilter.suplierName"
+              placeholder="Type to filter by name"
+            />
+            <button
+              style="margin: 10px; padding: 5px 40px 5px 40px;"
+              type="button"
+              (click)="create()"
+              class="btn btn-success pull-right"
+            >
+              New
+            </button>
+          </div>
+          <div class="card-body table-responsive-md">
+            <table
+              style="text-align: center;"
+              class="table table-bordered table-hover table-md"
+            >
+              <thead class="thead-light">
+                <tr>
+                  <th>SIno</th>
+                  <th>Vendor Name</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Contact Number</th>
+                  <th>Status</th>
+                  <th>Product</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let sup of supliers | filterBy: userFilter"
+                  [routerLink]="['/suplier/edit', sup._id]"
+                >
+                  <td>{{ sup.sino }}</td>
+                  <td>{{ sup.suplierName }}</td>
+                  <td>{{ sup.address }}</td>
+                  <td>{{ sup.city }}</td>
+                  <td>{{ sup.state }}</td>
+                  <td>{{ sup.contactNumber }}</td>
+                  <td>{{ sup.status }}</td>
+                  <td>{{ sup.product }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+  </div>
+</ng-template>

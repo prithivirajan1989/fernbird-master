@@ -1,0 +1,57 @@
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-align-justify"></i> USER DETAILS
+              <button type="button" (click)="create()"  class="btn btn-outline-primary pull-right" ><i class="fa fa-user-plus" aria-hidden="true"></i>   ADD USER </button>
+              
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table table-bordered table-striped table-sm">
+                <thead>
+                    <tr>
+                      <th>User Name</th>
+                      <th>Email</th>
+                      <th>Mobile Number</th>
+                      <th>Role</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let cust of customers ">
+                      <td >{{cust.name}}</td >
+                      <td>{{cust.email}}</td>
+                      <td>{{cust.mobilenumber}}</td>
+                      <td>{{cust.role}}</td>
+                      <td  ><button  [hidden]="roleBased" placement="top" show-delay="500" data-toggle="modal" (click)="dangerModal.show()"  class="btn btn-danger"><i class="fa fa-trash fa-xs" ></i></button>
+                          <button placement="top" show-delay="500" [routerLink]="['/settings/edit', cust._id]" class="btn btn-info"><i class="fa fa-pencil-square fa-xs" ></i></button>
+                          <div bsModal #dangerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-danger" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Do you want delete this record?</h4>
+                                </div>
+                                
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" (click)="dangerModal.hide()">Cancel</button>
+                                  <button type="button" (click)="deleteCustomer(cust._id)" class="btn btn-danger">Delete</button>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                          </div>
+                      </td >
+                    </tr>
+                  </tbody>
+              </table>
+             
+            </div>
+          </div>
+        </div>
+        <!--/.col-->
+      </div>
+
+
+     
+
+    

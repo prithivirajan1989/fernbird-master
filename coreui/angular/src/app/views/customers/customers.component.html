@@ -1,0 +1,156 @@
+<div style="position: relative;">
+  <ngx-spinner bdColor = "rgba(0,0,0,0.65)" size = "large" color = "#ffffff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" > Loading... </p></ngx-spinner>
+</div>
+
+<div
+  *ngIf="this.customers.length === 0; else tableContent"
+  class="animated fadeIn row"
+>
+  <div class="col-md-12" style="padding: 5px;">
+    <div>
+      <div class="card">
+        <div class="card-body" style="height: 400px;">
+          <div style="padding: 75px 25px;">
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h3 style="word-spacing: 2px;">
+                Business is no fun without people.
+              </h3>
+            </div>
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h6 style="word-spacing: 2px;">
+                (Create and manage your contacts, all in one place.)
+              </h6>
+            </div>
+
+            <div
+              class="col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 40px;
+              "
+            >
+              <div>
+                <div>
+                  <button
+                    style="padding: 10px 25px; border: 1;"
+                    type="button"
+                    (click)="create()"
+                    class="btn btn-primary"
+                  >
+                    CREATE NEW CUSTOMER
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #tableContent>
+  <div class="row">
+    <div class="col-lg-12" style="padding: 5px;">
+      <div class="card" style="margin: 10px;">
+        <div class="card-header" style="margin: 10px;">
+          <i class="fa fa-align-justify"></i> CUSTOMERS DETAILS
+          <input
+            style="
+              margin: 10px;
+              padding: 5px 30px 5px 30px;
+              text-align: center;
+            "
+            class="col-xs-12"
+            type="text"
+            [(ngModel)]="userFilter.customerName"
+            placeholder="Type to filter by name"
+          />
+          <button
+            style="margin: 3px; padding: 5px 40px 5px 40px;"
+            type="button"
+            (click)="create()"
+            class="btn btn-success pull-right"
+          >
+            New
+          </button>
+
+          <div class="btn-group" dropdown>
+            <button
+              type="button"
+              style="padding: 2px 20px 2px 20px;"
+              class="btn btn dropdown-toggle p-0"
+              dropdownToggle
+            >
+              <i class="icon-settings"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a class="dropdown-item" (click)="exportAsXLSX()">
+                <i class="fa fa-file-excel-o" aria-hidden="true"></i> Export to
+                excel</a
+              >
+              <!-- <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="card-body table-responsive-md">
+          <table
+            style="text-align: center;"
+            class="table table-bordered table-hover table-md"
+          >
+            <thead class="thead-light">
+              <tr>
+                <th>SI No</th>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Contact Number</th>
+                <th>Delivery Mode</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let cust of customers | filterBy: userFilter | paginate: { itemsPerPage: 5, currentPage: p }"
+                [routerLink]="['/customers/edit', cust._id]"
+              >
+                <td>{{ cust.sino }}</td>
+                <td>{{ cust.customerName }}</td>
+                <td>{{ cust.address }}</td>
+                <td>{{ cust.city }}</td>
+                <td>{{ cust.state }}</td>
+                <td>{{ cust.contactNumber }}</td>
+                <td>{{ cust.deliveryMode }}</td>
+                <td>{{ cust.status }}</td>
+              </tr>
+              <!-- <span *ngIf="(customers | filterBy: userFilter).length === 0">No matching elements</span> -->
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer ">
+          <div class="pull-right">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div> </ng-template>

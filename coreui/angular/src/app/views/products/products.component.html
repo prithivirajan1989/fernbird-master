@@ -1,0 +1,124 @@
+<div style="position: relative;">
+  <ngx-spinner bdColor = "rgba(0,0,0,0.65)" size = "large" color = "#ffffff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white; font-size: 20px;" > Loading... </p></ngx-spinner>
+</div>
+<div
+  *ngIf="this.products.length === 0; else other_content"
+  class="animated fadeIn row"
+>
+  <div class="col-md-12" style="padding: 5px;">
+    <div>
+      <div class="card">
+        <div class="card-body" style="height: 400px;">
+          <div style="padding: 75px 25px;">
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h3 style="word-spacing: 2px;">
+                Create standalone items and services that you buy and sell
+              </h3>
+            </div>
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h6 style="word-spacing: 2px;">
+                (Create and manage your products, all in one place.)
+              </h6>
+            </div>
+
+            <div
+              class="col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 40px;
+              "
+            >
+              <div>
+                <div>
+                  <button
+                    style="padding: 10px 25px; border: 1;"
+                    type="button"
+                   [routerLink]="['/products/add']"
+                    class="btn btn-primary"
+                  >
+                    CREATE NEW PRODUCTS
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #other_content>
+  <div class="row">
+    <div class="col-lg-12" style="padding: 0px;">
+      <div class="card" style="margin: 10px;">
+        <div class="card-header" style="margin: 10px;">
+          <i class="fa fa-align-justify"></i> PRODUCT DETAILS
+          <input
+            style="margin: 10px; padding: 5px 30px 5px 30px;"
+            type="text"
+            [(ngModel)]="userFilter.itemname"
+            placeholder="Type to filter by name"
+          />
+          <button
+            style="margin: 10px; padding: 5px 40px 5px 40px;"
+            type="button"
+            [routerLink]="['/products/add']"
+            class="btn btn-success pull-right"
+          >
+            New
+          </button>
+        </div>
+        <div class="card-body table-responsive-md">
+          <table
+            style="text-align: center;"
+            class="table table-bordered table-hover table-md"
+          >
+            <thead class="thead-light">
+              <tr>
+                <th>Item Code</th>
+                <th>Item Name</th>
+                <th>Unit</th>
+                <th>Grade</th>
+                <th>Weight</th>
+                <th>Selling Price</th>
+                <th>Purchase Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let product of products | filterBy: userFilter"
+                [routerLink]="['/products/edit', product._id]"
+              >
+                <td>{{ product.itemcode |uppercase }}</td>
+                <td>{{ product.itemname |uppercase  }}</td>
+                <td>{{ product.unit }}</td>
+                <td>{{ product.grade | uppercase }}</td>
+                <td>{{ product.weight }}</td>
+                <td>{{ product.sellingprice  }}</td>
+                <td>{{ product.purchaseprice  }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</ng-template>

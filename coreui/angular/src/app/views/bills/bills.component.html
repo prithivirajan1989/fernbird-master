@@ -1,0 +1,182 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+<div
+  *ngIf="this.bills.length === 0; else tableContent"
+  class="animated fadeIn row"
+>
+  <div class="col-md-12" style="padding: 5px;">
+    <div>
+      <div class="card">
+        <div class="card-body" style="height: 400px;">
+          <div style="padding: 75px 25px;">
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h3 style="word-spacing: 2px;">
+                Owe money? It's good to pay bills on time!
+              </h3>
+            </div>
+            <div
+              class="row col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <h6 style="word-spacing: 2px;">
+                (If you've purchased something for your business, and you don't
+                have to repay it immediately, then you can record it as a bill.)
+              </h6>
+            </div>
+
+            <div
+              class="col-xs-12"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 40px;
+              "
+            >
+              <div>
+                <div>
+                  <button
+                    style="padding: 10px 25px; border: 1;"
+                    type="button"
+                   [routerLink]="['/bill/add']"
+                    class="btn btn-primary"
+                  >
+                    CREATE A BILL
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #tableContent>
+  <div class="row">
+    <div class="col-lg-12" style="padding: 0px;">
+      <div class="card" style="margin: 10px;">
+        <div class="card-header" style="margin: 10px;">
+          <i class="fa fa-align-justify"></i>Bills
+          <input
+            style="margin: 10px; padding: 5px 30px 5px 30px;"
+            type="text"
+            [(ngModel)]="userFilter.vendorName"
+            placeholder="Type to filter by name"
+          />
+          <button
+            style="margin: 10px; padding: 5px 40px 5px 40px;"
+            type="button"
+            [routerLink]="['/bill/add']"
+            class="btn btn-success pull-right"
+          >
+            New
+          </button>
+        </div>
+        <div class="card-body table-responsive-md">
+          <table
+            style="text-align: center;"
+            class="table table-bordered table-hover table-md"
+          >
+            <thead class="thead-light">
+              <tr>
+                <th>Vendor Name</th>
+                <th>Vendor Number</th>
+                <th>Vendor Email</th>
+                <th>Bill no</th>
+                <th>Bill Date</th>
+                <th>Due Date</th>
+                <th>Bill Type</th>
+                <th>Generated Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of bills | filterBy: userFilter">
+                <td>{{ product.vendorName }}</td>
+                <td>{{ product.vendorNo }}</td>
+                <td>{{ product.vendorEmail }}</td>
+                <td>{{ product.billNo }}</td>
+                <td>{{ product.billDate | date: "dd/MM/yyyy" }}</td>
+                <td>{{ product.dueDate | date: "dd/MM/yyyy" }}</td>
+                <td>{{ product.billType }}</td>
+                <td>{{ product.date | date: "dd/MM/yyyy" }}</td>
+                <td>
+                  <button
+                    tooltip="Delete Invoice"
+                    placement="top"
+                    show-delay="500"
+                    data-toggle="modal"
+                    (click)="dangerModal.show()"
+                    class="btn btn-danger"
+                  >
+                    <i class="fa fa-trash fa-xs"></i>
+                  </button>
+                  <!-- <button
+                    tooltip="Edit Purchase"
+                    placement="top"
+                    show-delay="500"
+                    [routerLink]="['/purchase/edit', product._id]"
+                    class="btn btn-info"
+                  >
+                    <i class="fa fa-pencil-square fa-xs"></i>
+                  </button> -->
+                  <div
+                    bsModal
+                    #dangerModal="bs-modal"
+                    class="modal fade"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-danger" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">
+                            Do you want delete this record?
+                          </h4>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            (click)="dangerModal.hide()"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            type="button"
+                            (click)="deleteInvoice(product._id)"
+                            class="btn btn-danger"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                      <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</ng-template>

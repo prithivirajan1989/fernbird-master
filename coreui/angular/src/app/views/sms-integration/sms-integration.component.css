@@ -1,0 +1,14 @@
+label{
+    font-size: 16px;
+    padding:  5px 0;
+    font-weight: 500;
+    word-spacing: 3px;
+    text-align: justify;
+    
+  }
+ 
+ 
+ .invalid-feedback {
+   font-size: 15px;
+   padding: 0 15px;
+ }

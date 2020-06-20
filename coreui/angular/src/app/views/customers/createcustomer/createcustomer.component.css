@@ -1,0 +1,25 @@
+#create{
+    margin-top: 10%;
+    margin-left: 30%;
+  }
+  
+
+  input.ng-invalid.ng-touched,select.ng-invalid.ng-touched{
+    border-color: #dc3545;
+  }
+
+  /* .col-lg-6 {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+  }
+
+   */
+
+  body strong{
+     margin-bottom: 5%;
+   }
+
+   .customer{
+     margin-bottom: 30px;
+   }

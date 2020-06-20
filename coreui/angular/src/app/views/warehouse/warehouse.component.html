@@ -1,0 +1,111 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<div  class=" animated fadeIn row" >
+  <div class="col-md-12" style="padding: 5px;">
+    <div *ngIf="!table">
+      <div class="card ">
+
+        <div class="card-body" style="height: 400px;">
+
+
+         <div style="padding: 75px 25px;" >
+          <div class="row col-xs-12" style="display: flex;
+          align-items: center;
+          justify-content: center;">
+          <h3 style="word-spacing: 2px;">
+            Start managing multiple warehouses!
+          </h3>
+
+        </div>
+        <div class="  row col-xs-12" style="display: flex;
+          align-items: center;
+          justify-content: center;">
+
+          <h6 style="word-spacing: 2px;">
+            (Seamlessly track and manage your inventory across multiple warehouses.)
+          </h6>
+        </div>
+
+
+        <div class="  col-xs-12" style="display: flex;
+           align-items: center;
+           justify-content: center; margin-top: 40px;">
+          <div>
+            <div>
+              <button style="padding: 10px 25px; border: 1;" type="button" [routerLink]="['/orgsettings/warehouse/add']" routerLinkActive="router-link-active"   class="btn btn-primary">
+               ENABLE WAREHOUSE</button>
+            </div>
+          </div>
+        </div>
+
+         </div>
+
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div *ngIf="table" class="row">
+  <div class="col-lg-12" style="padding: 5px;">
+    <div class="card" style="margin:10px;">
+      <div class="card-header" style="margin:10px;" >
+        <i class="fa fa-align-justify"></i> WAREHOUSE DETAILS
+        <input style="margin: 10px; padding:5px 30px 5px 30px; text-align: center;" class="col-xs-12" type="text" [(ngModel)]="userFilter.warehousenAME" placeholder="Type to filter by name">
+        <button style=" margin: 3px;padding:5px 40px 5px 40px;" type="button" [routerLink]="['/orgsettings/warehouse/add']" class="btn btn-success pull-right" >New</button>
+
+        <div class="btn-group " dropdown>
+          <button type="button"  style="padding:2px 20px 2px 20px; " class="btn btn dropdown-toggle p-0" dropdownToggle>
+            <i class="icon-settings"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <a class="dropdown-item"> <i class="fa fa-file-excel-o" aria-hidden="true"></i> Export to excel</a>
+            <!-- <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a> -->
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="card-body  table-responsive-md ">
+
+        <table style="text-align: center;"  class="table table-bordered table-hover table-md">
+          <thead class="thead-light" >
+            <tr>
+
+              <th>Warehouse Name</th>
+              <th>Country</th>
+              <th>State</th>
+              <th> Number</th>
+              <th>Email</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cust of warehouses | filterBy: userFilter "  [routerLink]="['/customers/edit', cust._id]" >
+              <td>{{cust.sino}}</td>
+              <td>{{cust.warehouseName}}</td>
+              <td>{{cust.country}}</td>
+              <td>{{cust.state}}</td>
+              <td>{{cust.number}}</td>
+              <td>{{cust.email}}</td>
+
+            </tr>
+            <!-- <span *ngIf="(customers | filterBy: userFilter).length === 0">No matching elements</span> -->
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <!--/.col-->
+</div>
