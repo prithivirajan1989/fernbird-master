@@ -6,6 +6,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Stocks } from '../stock';
 import { ProfileUser } from '../../profile/profile';
 import { StocksService } from '../stocks.service';
+import { ProductsService } from '../../products/products.service';
+import { Products } from '../../products/products';
 
 @Component({
   selector: 'app-createstock',
@@ -13,33 +15,45 @@ import { StocksService } from '../stocks.service';
   styleUrls: ['./createstock.component.css']
 })
 export class CreatestockComponent implements OnInit {
-  Users: ProfileUser;
-
+  // Users: ProfileUser;
+  resume = new Stocks();
   detailForm: FormGroup;
-
-  constructor( private toastr: ToastrService, private router: Router, private service: StocksService,private fb: FormBuilder) {
-    this.detailForm = this.fb.group({
-      stockPoint: ['', Validators.required],
-      product: ['', Validators.required],
-      grade: ['', Validators.required],
-      // units: ['', Validators.required],
-      openingStock: ['', Validators.required],
-      stockIn: ['', Validators.required],
-      stockOut: ['', Validators.required],
-		});
-   }
+  
+  protected products: Products[] = [];
+  constructor( private toastr: ToastrService,
+     private router: Router, 
+     private productService: ProductsService,
+     private service: StocksService) { }
 
   ngOnInit(): void {
-    this.getUser();
+    this.createForm();
+    this.getItem();
 
   }
 
-  getUser() {
-    const ls = localStorage.getItem('user');
-    this.Users = JSON.parse(ls);
+  getItem(){
+    this.productService.getProductsList().subscribe(data => {
+      
+      this.products = data;
+      
+    });
   }
 
+  // getUser() {
+  //   const ls = localStorage.getItem('user');
+  //   this.Users = JSON.parse(ls);
+  // }
 
+  private createForm() {
+    this.detailForm = new FormGroup({
+      stockPoint: new FormControl('', Validators.required),
+      product: new FormControl('', Validators.required),
+      grade: new FormControl('', Validators.required),
+      openingStock: new FormControl('', Validators.required),
+      stockIn: new FormControl('', Validators.required),
+      stockOut: new FormControl('', Validators.required),
+    });
+  }
 
   save() {
 

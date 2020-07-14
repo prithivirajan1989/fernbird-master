@@ -79,7 +79,7 @@ export class CustomersComponent implements OnInit {
 
       return {
         Date: customer.date,
-        SiNo: customer.sino,
+       // SiNo: customer.sino,
         CustomeName: customer.customerName,
         Address: customer.address,
         City: customer.city,

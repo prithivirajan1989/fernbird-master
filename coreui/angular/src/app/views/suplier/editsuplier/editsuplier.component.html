@@ -25,7 +25,7 @@
           <form [formGroup]="detailForm" (ngSubmit)="onUpdate()">
 
 
-            <div class="row">
+            <!-- <div class="row">
               <label class="col-md-3">SI no :</label>
               <div class="form-group col-md-5">
                 <input type="tel" class="form-control" placeholder="SI No"  formControlName="sino" #sino   [(ngModel)] = "supliers.sino"
@@ -34,18 +34,7 @@
                   <div>SI no is required</div>
                 </div>
             </div>
-            </div>
-
-            <div class="row">
-              <label class="col-md-3">Address :</label>
-              <div class="form-group col-md-5">
-                <textarea type="text" class="form-control" placeholder="Address"  formControlName="address" #address   [(ngModel)] = "supliers.address"
-                [ngClass]="{'is-invalid':detailForm.get('address').touched && detailForm.get('address').invalid}"  ></textarea>
-                <div class="invalid-feedback">
-                  <div>Address is required</div>
-                </div>
-            </div>
-            </div>
+            </div> -->
 
             <div class="row">
               <label class="col-md-3">Vendor Name :</label>
@@ -57,6 +46,19 @@
                 </div>
             </div>
             </div>
+            
+            <div class="row">
+              <label class="col-md-3">Address :</label>
+              <div class="form-group col-md-5">
+                <textarea type="text" class="form-control" placeholder="Address"  formControlName="address" #address   [(ngModel)] = "supliers.address"
+                [ngClass]="{'is-invalid':detailForm.get('address').touched && detailForm.get('address').invalid}"  ></textarea>
+                <div class="invalid-feedback">
+                  <div>Address is required</div>
+                </div>
+            </div>
+            </div>
+
+            
 
             <div class="row">
               <label class="col-md-3">City :</label>

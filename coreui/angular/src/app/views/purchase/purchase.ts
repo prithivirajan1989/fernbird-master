@@ -1,5 +1,5 @@
 export class Purchase {
-    sino: Number;
+    //sino: Number;
     suplierName: Number;
     address: String;
     contactNumber: Number;

@@ -4,7 +4,7 @@ const Customers = require("../models/customers");
 
 exports.addCustomers = (req, res) => {
     let newCustomer = new Customers({
-        sino: req.body.sino,
+      //  sino: req.body.sino,
         customerName: req.body.customerName,
         address: req.body.address,
         city: req.body.city,
@@ -71,7 +71,7 @@ exports.updateCustomer = (req, res) => {
     Customers.findByIdAndUpdate(
         req.params.id, {
             $set: {
-                sino: req.body.sino,
+               // sino: req.body.sino,
                 customerName: req.body.customerName,
                 address: req.body.address,
                 city: req.body.city,

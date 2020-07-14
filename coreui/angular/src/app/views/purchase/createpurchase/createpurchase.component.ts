@@ -6,6 +6,10 @@ import { DataService } from '../../../auth/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProfileUser } from '../../profile/profile';
 import { PurchasesService } from '../purchases.service';
+import { Supliers } from '../../suplier/suplier';
+import { SupliersSercice } from '../../suplier/supliers.service';
+import { Products } from '../../products/products';
+import { ProductsService } from '../../products/products.service';
 
 @Component({
   selector: 'app-createpurchase',
@@ -14,11 +18,13 @@ import { PurchasesService } from '../purchases.service';
 })
 export class CreatepurchaseComponent implements OnInit {
   Users: ProfileUser;
-
-
+  resume = new Purchase();
+  
+  protected suppliers: Supliers[] = [];
+  protected products: Products[] = [];
   detailForm: FormGroup;
 
-  constructor( private fb : FormBuilder, private toastr: ToastrService, private router: Router, private service: PurchasesService) {
+  constructor( private fb : FormBuilder,private productService: ProductsService, private supplierService: SupliersSercice,private toastr: ToastrService, private router: Router, private service: PurchasesService) {
     // this.detailForm = this.fb.group({
     //   sino: ['', Validators.required],
     //   suplierName: ['', Validators.required],
@@ -40,6 +46,23 @@ export class CreatepurchaseComponent implements OnInit {
    ngOnInit(): void {
     this.getUser();
     this.createForm();
+    this.getName();
+    this.getItem();
+  }
+  getItem(){
+    this.productService.getProductsList().subscribe(data => {
+      
+      this.products = data;
+      
+    });
+  }
+
+  getName(){
+    this.supplierService.getSupliersList().subscribe(data => {
+      
+      this.suppliers = data;
+      
+    });
   }
 
   getUser() {
@@ -50,7 +73,7 @@ export class CreatepurchaseComponent implements OnInit {
 
   private createForm() {
     this.detailForm = new FormGroup({
-      sino: new FormControl('', Validators.required),
+      //sino: new FormControl('', Validators.required),
       suplierName: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       contactNumber: new FormControl('', Validators.required),

@@ -7,10 +7,6 @@ const StockRegisterSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     required: true },
-    date: {
-        type: Date,
-        default: Date.now
-    },
     stockPoint: {
         type: String
     },
@@ -20,9 +16,9 @@ const StockRegisterSchema = mongoose.Schema({
     grade: {
         type: String
     },
-    unit: {
-        type: Number
-    },
+    // unit: {
+    //     type: Number
+    // },
     openingStock: {
         type: String
     },
@@ -31,11 +27,15 @@ const StockRegisterSchema = mongoose.Schema({
     },
     stockOut:{
         type: String
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
     
 })
 
-const stockRegister = module.exports = mongoose.model('StockRegister', StockRegisterSchema);
+const stockRegister = module.exports = mongoose.model('stockRegister', StockRegisterSchema);
 
 
 module.exports.getUserById = function (id, callback){

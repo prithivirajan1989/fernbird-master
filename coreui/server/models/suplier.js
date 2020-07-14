@@ -7,9 +7,9 @@ const SuplierSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     required: true },
-    sino: {
-        type: Number
-    },
+    // sino: {
+    //     type: Number
+    // },
     suplierName: {
         type: String
     },

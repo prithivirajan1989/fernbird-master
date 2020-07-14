@@ -3,7 +3,7 @@ import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Products } from './products';
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -12,6 +12,7 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 
 export class ProductsService {
+  private products: Products[] = [];
   private productUrl = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient) { }
@@ -63,7 +64,15 @@ export class ProductsService {
   }
 
 
+  // getProductsList(): Observable<Products[]> {
+  //   return this.http.get<Products[]>(`${this.productUrl}`,  { headers: { 'Creator': '' }});
+  // }
+
   getProductsList(): Observable<Products[]> {
-    return this.http.get<Products[]>(`${this.productUrl}`,  { headers: { 'Creator': '' }});
+    return this.http.get<Products[]>(`${this.productUrl}` , { headers: { 'Creator': '' }}).pipe(tap(products => {
+    this.products = this.products;
+
+    }));
   }
+
 }

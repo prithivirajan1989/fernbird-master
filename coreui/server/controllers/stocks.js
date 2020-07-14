@@ -4,14 +4,14 @@ const StockRegister = require("../models/stockRegister");
 exports.createStock = (req, res) => {
    
     let newStock = new StockRegister({
-        stockPoint: req.body.sstockPoint,
-        product: req.body.sproduct,
-        grade: req.body.sgrade,
-        units: req.units,
-        openingStock: req.body.sopeningStock,
-        stockIn: req.body.sstockIn,
-        stockOut: req.body.sstockOut,
-        creator: req.query.id
+        stockPoint: req.body.stockPoint,
+        product: req.body.product,
+        grade: req.body.grade,
+        //units: req.units,
+        openingStock: req.body.openingStock,
+        stockIn: req.body.stockIn,
+        stockOut: req.body.stockOut,
+        creator: req.query.id,
     });
    
     newStock.save((err, stock) => {
@@ -24,7 +24,7 @@ exports.createStock = (req, res) => {
                 return res.json({
                     success: true,
                     msg: 'Stock added successfully',
-                    stock
+                    stock,
                 })
             }
         })

@@ -1,5 +1,5 @@
 export class Supliers {
-    sino: Number;
+    //sino: Number;
     suplierName: Number;
     address: String;
     city: String;

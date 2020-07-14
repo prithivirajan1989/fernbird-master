@@ -9,7 +9,7 @@
     
           <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
 
-            <div class="row">
+            <!-- <div class="row">
               <label class="col-md-3">SI no :</label>
               <div class="form-group col-md-5">
                 <input type="tel" class="form-control" placeholder="SI No"  formControlName="sino" #sino 
@@ -18,9 +18,9 @@
                   <div>SI no is required</div>
                 </div>
             </div>
-            </div>
+            </div> -->
 
-            <div class="row">
+            <!-- <div class="row">
               <label class="col-md-3">Vendor Name :</label>
               <div class="form-group col-md-5">
                 <input type="text" class="form-control" placeholder="Vendor Name"  formControlName="suplierName" #suplierName
@@ -28,6 +28,21 @@
                 <div class="invalid-feedback">
                   <div>Suplier Name is required</div>
                 </div>
+            </div>
+            </div> -->
+
+            <div class="row">
+              <label class="col-md-3">Vendor Name :</label>
+              <div class="form-group col-md-5">
+                <select class="form-control"  placeholder="Vendor Name" formControlName="suplierName" [(ngModel)]="resume.suplierName" #suplierName 
+                [ngClass]="{'is-invalid':detailForm.get('suplierName').touched && detailForm.get('suplierName').invalid}">  
+                <option value=" ">Select Vendor Name</option>  
+                <option *ngFor="let obj of suppliers " >{{obj.suplierName}} </option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div>Suplier Name is required</div>
+                  </div>
+              
             </div>
             </div>
 
@@ -53,7 +68,7 @@
             </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
               <label class="col-md-3">Product :</label>
               <div class="form-group col-md-5">
                 <input type="text" class="form-control" placeholder="Product" formControlName="product" #product
@@ -61,6 +76,21 @@
                 <div class="invalid-feedback">
                   <div>Product is required</div>
                 </div>
+            </div>
+            </div> -->
+
+            <div class="row">
+              <label class="col-md-3">Product Name :</label>
+              <div class="form-group col-md-5">
+                <select class="form-control"  placeholder="Product Name" formControlName="product" [(ngModel)]="resume.product" #product 
+                [ngClass]="{'is-invalid':detailForm.get('product').touched && detailForm.get('product').invalid}">  
+                <option value=" ">Select Product</option>  
+                <option *ngFor="let obj of products " >{{obj.itemname}} </option>
+                  </select>
+                  <div class="invalid-feedback">
+                    <div>Product Name is required</div>
+                  </div>
+              
             </div>
             </div>
 

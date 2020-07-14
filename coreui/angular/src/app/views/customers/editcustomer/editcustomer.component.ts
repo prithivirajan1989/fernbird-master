@@ -29,7 +29,7 @@ export class EditcustomerComponent implements OnInit {
      private router: Router, 
      private service: CustomersService) {
     this.detailForm = this.fb.group({
-      sino: ['', Validators.required],
+     // sino: ['', Validators.required],
       customerName: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],

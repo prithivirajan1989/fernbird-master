@@ -116,7 +116,7 @@
           >
             <thead class="thead-light">
               <tr>
-                <th>SI No</th>
+                <!-- <th>SI No</th> -->
                 <th>Customer Name</th>
                 <th>Address</th>
                 <th>City</th>
@@ -131,8 +131,8 @@
                 *ngFor="let cust of customers | filterBy: userFilter | paginate: { itemsPerPage: 5, currentPage: p }"
                 [routerLink]="['/customers/edit', cust._id]"
               >
-                <td>{{ cust.sino }}</td>
-                <td>{{ cust.customerName }}</td>
+                <!-- <td>{{ cust.sino }}</td> -->
+                <td>{{ cust.customerName|uppercase }}</td>
                 <td>{{ cust.address }}</td>
                 <td>{{ cust.city }}</td>
                 <td>{{ cust.state }}</td>
@@ -153,4 +153,5 @@
       </div>
     </div>
     <!--/.col-->
-  </div> </ng-template>
+  </div> 
+</ng-template>

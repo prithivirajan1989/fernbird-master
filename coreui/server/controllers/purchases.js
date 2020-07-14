@@ -3,9 +3,9 @@ const Purchase = require('../models/purchase');
 
 exports.createPurchases = (req, res) => {
     let newPurchase = new Purchase({
-        sino: req.body.sino,
+      //  sino: req.body.sino,
         suplierName: req.body.suplierName,
-        address: req.bod.address,
+        address: req.body.address,
         contactNumber: req.body.contactNumber,
         product: req.body.product,
         grade: req.body.grade,
@@ -14,7 +14,7 @@ exports.createPurchases = (req, res) => {
         amount: req.body.amount,
         transportCharge: req.body.transportCharge,
         miscCharge: req.body.miscCharge,
-        totalPurchaseAmount: req.bod.totalPurchaseAmount,
+        totalPurchaseAmount: req.body.totalPurchaseAmount,
         paymentStatus: req.body.paymentStatus,
         creator: req.query.id
     });
@@ -70,7 +70,7 @@ exports.getPurchaseById = (req, res, ) => {
 
 exports.updatePurchase = (req, res, ) => {
     Purchase.findByIdAndUpdate(req.params.id, { $set:{
-    sino: req.body.sino,
+   // sino: req.body.sino,
     suplierName : req.body.suplierName,
     address : req.body.address,
     contactNumber  : req.body.contactNumber,

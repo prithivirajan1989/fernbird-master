@@ -92,7 +92,7 @@
           >
             <thead class="thead-light">
               <tr>
-                <th>SIno</th>
+                
                 <th>Date</th>
                 <th>Suplier Name</th>
                 <th>Address</th>
@@ -113,12 +113,12 @@
                 *ngFor="let product of purchases | filterBy: userFilter"
                 [routerLink]="['/purchase/edit', product._id]"
               >
-                <td>{{ product.sino }}</td>
+                
                 <td>{{ product.date | date: "dd/MM/yyyy" }}</td>
-                <td>{{ product.suplierName }}</td>
+                <td>{{ product.suplierName|uppercase }}</td>
                 <td>{{ product.address }}</td>
                 <td>{{ product.contactNumber }}</td>
-                <td>{{ product.product }}</td>
+                <td>{{ product.product|uppercase }}</td>
                 <td>{{ product.grade }}</td>
                 <td>{{ product.quality }}</td>
                 <td>{{ product.rate }}</td>

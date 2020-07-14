@@ -44,7 +44,6 @@ export class SupliersSercice {
     .pipe(map((res: Response) => res));
   }
 
-
   getSupliersList(): Observable<[]> {
     return this.http.get<[]>(`${this.suplierUrl}` , { headers: { 'Creator': '' }});
   }

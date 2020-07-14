@@ -1,7 +1,7 @@
 export class Customers {
     _id: string;
     date?: Date;
-    sino: number;
+   // sino: number;
     customerName: string;
     address: string;
     city: string;

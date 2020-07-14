@@ -25,7 +25,7 @@ export class EditpurchaseComponent implements OnInit {
     private service: PurchasesService
   ) {
     this.detailForm = this.fb.group({
-      sino: ['', Validators.required],
+     // sino: ['', Validators.required],
       suplierName: ['', Validators.required],
       address: ['', Validators.required],
       contactNumber: ['', Validators.required],

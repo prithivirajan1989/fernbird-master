@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Stocks } from './stock';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class StocksService {
     headers.append('Content-type', 'application/json');
     return this.http.post(`${this.stockUrl}`, stock, { headers: { 'Creator': '' }})
     .pipe(map((res: Response) => res));
+    
   }
 
 

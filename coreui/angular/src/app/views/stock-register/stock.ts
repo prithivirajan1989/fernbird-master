@@ -1,10 +1,10 @@
 export class Stocks {
 
-    date: Date;
-    stockPoint: Number;
+    
+    stockPoint: String;
     product: String;
     grade: String;
-    unit: String;
+   // unit: String;
     openingStock: String;
     stockIn: String;
     stockOut: String;

@@ -104,7 +104,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let product of bills | filterBy: userFilter">
-                <td>{{ product.vendorName }}</td>
+                <td>{{ product.vendorName|uppercase }}</td>
                 <td>{{ product.vendorNo }}</td>
                 <td>{{ product.vendorEmail }}</td>
                 <td>{{ product.billNo }}</td>

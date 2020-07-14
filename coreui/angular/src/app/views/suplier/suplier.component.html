@@ -93,7 +93,7 @@
             >
               <thead class="thead-light">
                 <tr>
-                  <th>SIno</th>
+                  <!-- <th>SIno</th> -->
                   <th>Vendor Name</th>
                   <th>Address</th>
                   <th>City</th>
@@ -108,14 +108,14 @@
                   *ngFor="let sup of supliers | filterBy: userFilter"
                   [routerLink]="['/suplier/edit', sup._id]"
                 >
-                  <td>{{ sup.sino }}</td>
-                  <td>{{ sup.suplierName }}</td>
+                  <!-- <td>{{ sup.sino }}</td> -->
+                  <td>{{ sup.suplierName|uppercase }}</td>
                   <td>{{ sup.address }}</td>
                   <td>{{ sup.city }}</td>
                   <td>{{ sup.state }}</td>
                   <td>{{ sup.contactNumber }}</td>
                   <td>{{ sup.status }}</td>
-                  <td>{{ sup.product }}</td>
+                  <td>{{ sup.product |uppercase }}</td>
                 </tr>
               </tbody>
             </table>

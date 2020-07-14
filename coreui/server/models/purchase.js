@@ -7,9 +7,9 @@ const PurchaseSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     required: true },
-    sino: {
-        type: Number
-    },
+    // sino: {
+    //     type: Number
+    // },
     date: {
         type: Date,
         default: Date.now

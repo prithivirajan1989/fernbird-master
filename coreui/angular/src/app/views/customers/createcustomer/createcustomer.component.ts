@@ -25,7 +25,7 @@ export class CreatecustomerComponent implements OnInit {
   }
   private createForm() {
     this.detailForm = new FormGroup({
-      sino: new FormControl('', Validators.required),
+     // sino: new FormControl('', Validators.required),
       customerName: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),

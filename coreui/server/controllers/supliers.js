@@ -3,7 +3,7 @@ const Supliers = require("../models/suplier");
 
 exports.addSupliers = (req, res) => {
     let newSuplier = new Supliers({
-        sino: req.body.sino,
+      //  sino: req.body.sino,
         suplierName: req.body.suplierName,
         address: req.body.address,
         city: req.body.city,
@@ -64,7 +64,7 @@ exports.updateSuplier = (req, res) => {
     Supliers.findByIdAndUpdate(
         req.params.id, {
             $set: {
-                sino: req.body.sino,
+               // sino: req.body.sino,
                 suplierName: req.body.suplierName,
                 address: req.body.address,
                 city: req.body.city,

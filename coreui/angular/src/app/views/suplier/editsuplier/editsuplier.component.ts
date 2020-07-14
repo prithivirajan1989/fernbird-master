@@ -20,7 +20,7 @@ export class EditsuplierComponent implements OnInit {
   constructor(  private toastr: ToastrService,
     private fb: FormBuilder, private actiroute: ActivatedRoute, private router: Router, private service: SupliersSercice) {
     this.detailForm = this.fb.group({
-      sino: ['', Validators.required],
+     // sino: ['', Validators.required],
       suplierName: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
