@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">
         <strong> Update Customer </strong>
-        <small>Details</small>
+        <small>details</small>
         <button style="padding:5px 20px 5px 20px; " tooltip="Delete Customer" [hidden]="roleBased" placement="top" show-delay="500"
                   data-toggle="modal" (click)="dangerModal.show()" class="btn btn-danger pull-right"> Delete</button>
                   <div bsModal #dangerModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
@@ -15,9 +15,7 @@
                       </div>
 
                       <div class="modal-footer">
-                        <button style="padding:5px 20px 5px 20px; " type="button" class="btn btn-secondary btn-xs " (click)="dangerModal.hide()">Cancel</button>
-                        <button style="padding:5px 20px 5px 20px; " type="button" (click)="deleteCustomer()" class="btn btn-danger btn-xs ">Delete</button>
-                      </div>
+                       </div>
                     </div>
                   </div>
                 </div>
@@ -125,7 +123,9 @@
           </div>
           </div>
   
-  
+          <button style="padding:5px 20px 5px 20px; " type="button" class="btn btn-secondary btn-xs " (click)="dangerModal.hide()">Cancel</button>
+          <button style="padding:5px 20px 5px 20px; " type="button" (click)="deleteCustomer()" class="btn btn-danger btn-xs ">Delete</button>
+        
           <button style="margin: 10px; padding:5px 30px 5px 30px;" type="submit" [disabled]= "detailForm.invalid" class="btn btn-success pull-right">Update Customer</button>
         </form>
       </div>

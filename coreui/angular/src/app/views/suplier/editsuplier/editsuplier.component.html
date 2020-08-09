@@ -13,9 +13,7 @@
                 </div>
 
                 <div class="modal-footer">
-                  <button  style=" margin: 10px;padding:5px 40px 5px 40px;" type="button" class="btn btn-secondary" (click)="dangerModal.hide()">Cancel</button>
-                  <button  style=" margin: 10px;padding:5px 40px 5px 40px;" type="button" (click)="deleteSuplier()" class="btn btn-danger">Delete</button>
-                </div>
+                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div>
@@ -120,7 +118,9 @@
             </div>
             </div>
 
-
+            <button  style=" margin: 10px;padding:5px 40px 5px 40px;" type="button" class="btn btn-secondary" (click)="dangerModal.hide()">Cancel</button>
+            <button  style=" margin: 10px;padding:5px 40px 5px 40px;" type="button" (click)="deleteSuplier()" class="btn btn-danger">Delete</button>
+          
 
             <button type="submit" style=" margin: 10px;padding:5px 40px 5px 40px;" [disabled]= "detailForm.invalid" class="btn btn-success pull-right">Update</button>
           </form>
